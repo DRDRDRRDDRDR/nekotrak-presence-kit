@@ -38,7 +38,7 @@ NekoTrak 的「自定义文本」有个命令替换语法 —— 输入框的 pl
 
 **副作用警告**：`${}` 里是真正的命令行执行，不是沙箱。`${echo hi > C:\x.txt}` 是真会写文件的。别把来路不明的字符串贴进去。
 
-**预设存在哪**：不在 `config.json`，在一个 SQLCipher 加密的 SQLite 库里（表 `custom_text_presets`），密钥由 SteamID 派生。外部脚本写不进去 —— 只能走界面。这就是 `tools/` 存在的理由。
+**预设存在哪**：不在 `config.json`，在一个 SQLCipher 加密的 SQLite 库里（表 `custom_text_presets`），密钥由 SteamID 派生。**常规脚本写不进去，但密钥会以明文躺在 NekoTrak 进程内存里** —— `tools/nk-hardwrite.py key` 能从内存里把它抠出来，然后直连数据库读写（300 条约 0.13 秒）。界面通道（`tools/*.ps1`）仍然保留，因为它是唯一不碰内存的办法。
 
 ---
 
@@ -273,8 +273,69 @@ nekotrak-presence-kit/
 
 ---
 
+---
+
+## 按应用 / 按网站分配短语（比分类格式更细）
+
+分类格式是「一个分类一句话」。想做到「每个程序自己一句话」，用下面两层。
+
+### 1. 应用级短语 —— `app_status_rules`
+
+一个应用可以挂多条短语，软件每次刷新挑一条。
+
+```bash
+# phrases/app-status/ 下是现成的 TSV：应用名<TAB>短语
+python tools/nk-hardwrite.py app-status phrases/app-status/00-personal.tsv
+```
+
+⚠ **批量灌库一定用默认的 `sequential`，别加 `--mode random`。**
+我踩过这个坑：`random` 模式会让状态栏在两个应用的短语之间来回跳，看起来像「同时弹了两个 app 的短语」。
+（`app_status_configs.selection_mode`，只有 `sequential` / `random` 两个值。）
+
+`{app}` 在短语里会被替换成当前应用名，实测有效：`[{app}] 鼠标不是我在动` → `[远程桌面连接] 鼠标不是我在动`。
+
+### 2. 网站短语 —— 靠改写窗口标题
+
+浏览器没有「网站短语」字段。真正管用的是**窗口标题改写规则**（`window_title_filter_rules`）：正则匹配标题，命中就整条替换。
+
+```bash
+python tools/nk-hardwrite.py title-filters phrases/title-filters/00-personal.tsv
+```
+
+数据库 `sessions` 表里存的是软件实际抓到的标题，可以直接拿来验证：
+
+| 实际窗口 | 记录到的标题 |
+| --- | --- |
+| Opera GX | `正在 Steam 上数愿望单` |
+| DeepSeek Harness | `正在 GitHub 上假装提交代码` |
+| 远程桌面连接 | `114.28.145.65:10176 - 远程桌面连接`（无规则命中，原样） |
+
+⚠ **取舍**：应用级短语会顶掉整个标题段。所以给浏览器（Opera / Edge / Chrome / Firefox）
+**不要**配应用级短语，留着走标题路径，网站短语才看得见。
+
+### 3. 三层优先级（实测）
+
+```
+分类「状态显示格式」  >  应用级短语  >  默认的「应用名: 窗口标题」
+```
+
+分类格式一旦非空就会压过该分类下所有应用自己的短语。想用应用级短语，就把分类格式清空
+（清空前的模板留档在 `phrases/category-formats/00-personal.tsv`）。
+应用没有自己的短语时才回落到标题路径 —— 浏览器靠的就是这一层。
+
+### 4. 两个必须知道的
+
+- 应用级短语和标题规则都是**启动时加载**的，改完要重启 NekoTrak。
+- 验证时**别看软件里的「Steam 状态预览」**：那个面板约 15 秒才重绘一次，
+  会把 400 毫秒的更新看成 15 秒。要真数据就查数据库 `sessions.title`。
+
+---
+
 ## 许可
 
 短语和文档随便用。脚本按 MIT。
 
 **但请先读一遍 `docs/mechanism.md` 的副作用一节** —— `${}` 是真执行命令，不是模板替换。
+
+
+---

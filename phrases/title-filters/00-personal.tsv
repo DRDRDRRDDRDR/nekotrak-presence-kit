@@ -1,0 +1,26 @@
+# 窗口标题改写规则：正则<TAB>替换文本。这就是「网站短语」的实现方式。
+# 用法: python tools/nk-hardwrite.py title-filters phrases/title-filters/00-personal.tsv
+# 替换文本留空 = 把匹配到的部分删掉（前 5 条是内置的浏览器后缀清理）。
+# 匹配到的整条标题会被替换文本取代，所以写替换文本时不用写 ^.* 之类。
+\s*-\s*[^-]+?\s*-\s*Microsoft[\x{200B}\x{200C}\x{200D}\x{FEFF}]? Edge$	
+\s*-\s*Google Chrome$	
+—\s*Mozilla Firefox$	
+—\s*Zen Browser$	
+\s*-\s*Opera$	
+(?i)^.*bilibili.*$	正在 bilibili 上补充精神食粮
+(?i)^.*github.*$	正在 GitHub 上假装提交代码
+(?i)^.*repositories.*$	正在 GitHub 上假装提交代码
+(?i)^.*youtube.*$	正在 YouTube 上看两小时前说要看的教程
+(?i)^.*steam.*$	正在 Steam 上数愿望单
+(?i)^.*(百度一下|Google 搜索|Bing).*$	正在搜索一个我其实知道答案的问题
+(?i)^.*知乎.*$	正在知乎上看别人如何成功
+(?i)^.*微博.*$	正在微博上围观不认识的人吵架
+(?i)^.*reddit.*$	正在 Reddit 上读英文长文，然后假装看懂了
+(?i)^.*学信网.*$	正在查学信网，希望还能查到我自己
+(?i)^.*(蓝奏云|lanzou|lanzn).*$	正在蓝奏云下载一个不能说名字的东西
+(?i)^.*(百度网盘|pan\.baidu).*$	正在网盘里翻 2019 年的文件
+(?i)^.*(淘宝|天猫|京东).*$	正在购物车里添加第 30 件不买的东西
+(?i)^.*(网易云音乐|music\.163).*$	正在听一首不想让别人知道的歌
+(?i)^.*(斗鱼|抖音|快手).*$	正在看别人过我没有的生活
+(?i)^.*(Gmail|收件箱|Outlook).*$	正在收件箱里假装处理重要邮件
+(?i)^.*(Google 云端硬盘|OneDrive|Dropbox).*$	正在同步一个已经同步过的文件

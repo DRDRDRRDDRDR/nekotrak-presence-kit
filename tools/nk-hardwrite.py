@@ -12,6 +12,10 @@ Usage (NekoTrak may stay running — the app re-reads the table live):
     python nk-hardwrite.py presets <file.txt>  # append every line as a preset
     python nk-hardwrite.py presets <file.txt> --replace   # wipe first
     python nk-hardwrite.py formats <map.tsv>   # category  "name<TAB>format"
+    python nk-hardwrite.py app-status --read   # per-app status phrases
+    python nk-hardwrite.py app-status <map.tsv> [--mode random]
+    python nk-hardwrite.py title-filters --read    # window-title rewrite rules
+    python nk-hardwrite.py title-filters <map.tsv> # expression<TAB>replacement
     python nk-hardwrite.py dump                # show what's in there
     python nk-hardwrite.py sql "SELECT ..."    # read-only query
 
@@ -391,6 +395,176 @@ def cmd_dump(args):
         print('tables = %s' % len(db.query("SELECT name FROM sqlite_master WHERE type='table';")))
 
 
+def _app_id(db, name):
+    """Resolve an app by exact (case-insensitive) name, then by unique substring."""
+    rows = db.query('SELECT id FROM apps WHERE name = ?1 COLLATE NOCASE;', [name])
+    if rows:
+        return int(rows[0][0])
+    rows = db.query('SELECT id, name FROM apps WHERE name LIKE ?1;', ['%' + name + '%'])
+    if len(rows) == 1:
+        return int(rows[0][0])
+    if rows:
+        print('  AMBIGUOUS %s -> %s' % (name, ', '.join(r[1] for r in rows[:6])))
+    return None
+
+
+def cmd_title_filters(args):
+    """
+    Window-title rewrite rules.  This is how you get "per website" phrasing:
+    NekoTrak identifies a browser by its window title, so a rule that matches
+    the title can turn it into anything you like.
+
+      title-filters --read                 list the rules
+      title-filters --clear                remove every rule
+      title-filters <file>                 load  expression<TAB>replacement  lines
+
+    Expressions are treated as regex; a blank replacement deletes the match
+    (that is how the built-in "strip the browser name" rules work).
+    """
+    db, db_path = open_db()
+    read_only = '--read' in args
+    clear = '--clear' in args
+    path = None
+    for a in args:
+        if not a.startswith('--'):
+            path = a
+            break
+
+    with db:
+        if read_only:
+            print('db = %s' % db_path)
+            for r in db.query('SELECT id, sort_order, expression, replacement, enabled '
+                              'FROM window_title_filter_rules ORDER BY sort_order;'):
+                print('  #%-3s regex=%-3s %s   ->   %s' % (r[2], r[4], r[3], r[1] or ''))
+            return
+
+        bak = backup(db_path)
+        print('backup -> %s' % bak)
+
+        if clear:
+            n1 = db.run('DELETE FROM window_title_filter_rule_apps;')
+            n2 = db.run('DELETE FROM window_title_filter_rules;')
+            print('cleared %d rule(s), %d app link(s)' % (n2, n1))
+            if not path:
+                return
+
+        if not path:
+            print('nothing to do: pass --read, --clear, or a file')
+            return
+
+        so = int(db.query('SELECT COALESCE(MAX(sort_order), -1) + 1 FROM '
+                          'window_title_filter_rules;')[0][0])
+        ok = bad = 0
+        for ln in read_lines(path):
+            if not ln or ln.startswith('#'):
+                continue
+            parts = ln.split('\t')
+            expr = parts[0].strip()
+            repl = parts[1] if len(parts) > 1 else ''
+            if not expr:
+                bad += 1
+                continue
+            db.run('INSERT INTO window_title_filter_rules '
+                   '(sort_order, expression, replacement, case_sensitive, whole_word, '
+                   ' is_regex, enabled) VALUES (?1, ?2, ?3, 0, 0, 1, 1) '
+                   'ON CONFLICT(sort_order) DO UPDATE SET expression = excluded.expression, '
+                   'replacement = excluded.replacement, enabled = 1;',
+                   [so, expr, repl])
+            print('  OK    %s   ->   %s' % (expr, repl))
+            so += 1
+            ok += 1
+        print('done  ok=%d  bad=%d' % (ok, bad))
+        print('rules now = %s' % db.query('SELECT count(*) FROM '
+                                          'window_title_filter_rules;')[0][0])
+
+
+def cmd_app_status(args):
+    """
+    Per-app status phrases.
+
+      app-status --read                 list what is configured
+      app-status --clear                remove every per-app rule
+      app-status <file> [--mode random] load a file of  name<TAB>phrase  lines
+
+    Repeating the same app name adds another phrase for that app; the app then
+    cycles through them (sequential by default, random with --mode random).
+    """
+    db, db_path = open_db()
+    read_only = '--read' in args
+    clear = '--clear' in args
+    mode = 'random' if 'random' in args else 'sequential'
+    path = None
+    for a in args:
+        if not a.startswith('--'):
+            path = a
+            break
+
+    with db:
+        if read_only:
+            print('db = %s' % db_path)
+            rows = db.query('SELECT a.id, a.name, g.selection_mode FROM app_status_configs g '
+                            'JOIN apps a ON a.id = g.app_id ORDER BY a.name;')
+            if not rows:
+                print('(no per-app status rules configured)')
+            for aid, name, sel in rows:
+                print('\n[app %s] %s   mode=%s' % (aid, name, sel))
+                for r in db.query('SELECT sort_order, text, enabled FROM app_status_rules '
+                                  'WHERE app_id = ?1 ORDER BY sort_order;', [aid]):
+                    print('   %s. %s%s' % (int(r[0]) + 1, r[1],
+                                           '' if r[2] == '1' else '   (disabled)'))
+            return
+
+        bak = backup(db_path)
+        print('backup -> %s' % bak)
+
+        if clear:
+            n1 = db.run('DELETE FROM app_status_rules;')
+            n2 = db.run('DELETE FROM app_status_configs;')
+            print('cleared %d rule(s) and %d config(s)' % (n1, n2))
+            if not path:
+                return
+
+        if not path:
+            print('nothing to do: pass --read, --clear, or a file')
+            return
+
+        ok = bad = 0
+        # 每个 app 的下一个 sort_order
+        next_order = {}
+        for ln in read_lines(path):
+            if not ln or ln.startswith('#'):
+                continue
+            parts = re.split(r'\t', ln, 1)
+            if len(parts) != 2:
+                print('  SKIP  (no tab) %s' % ln[:60])
+                bad += 1
+                continue
+            name, text = parts[0].strip(), parts[1].strip()
+            aid = _app_id(db, name)
+            if aid is None:
+                print('  MISS  %s (no such app)' % name)
+                bad += 1
+                continue
+            so = next_order.get(aid)
+            if so is None:
+                so = int(db.query('SELECT COALESCE(MAX(sort_order), -1) + 1 '
+                                  'FROM app_status_rules WHERE app_id = ?1;', [aid])[0][0])
+            next_order[aid] = so + 1
+            db.run('INSERT INTO app_status_configs (app_id, selection_mode) VALUES (?1, ?2) '
+                   'ON CONFLICT(app_id) DO UPDATE SET selection_mode = excluded.selection_mode;',
+                   [aid, mode])
+            db.run('INSERT INTO app_status_rules (app_id, sort_order, text, enabled) '
+                   'VALUES (?1, ?2, ?3, 1) ON CONFLICT(app_id, sort_order) '
+                   'DO UPDATE SET text = excluded.text, enabled = 1;',
+                   [aid, so, text])
+            print('  OK    %s -> %s' % (name, text))
+            ok += 1
+        print('done  ok=%d  bad=%d' % (ok, bad))
+        print('rules now = %s, configured apps = %s' % (
+            db.query('SELECT count(*) FROM app_status_rules;')[0][0],
+            db.query('SELECT count(*) FROM app_status_configs;')[0][0]))
+
+
 def cmd_sql(args):
     db, _ = open_db()
     with db:
@@ -404,6 +578,7 @@ def main(argv):
         return 2
     cmd, rest = argv[1], argv[2:]
     table = {'key': cmd_key, 'presets': cmd_presets, 'formats': cmd_formats,
+             'app-status': cmd_app_status, 'title-filters': cmd_title_filters,
              'dump': cmd_dump, 'sql': cmd_sql}
     if cmd not in table:
         print('unknown command: %s' % cmd)

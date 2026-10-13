@@ -1,0 +1,79 @@
+# 应用级状态短语：应用名<TAB>短语。
+# 用法: python tools/nk-hardwrite.py app-status phrases/app-status/00-personal.tsv
+# 注意：批量灌库用默认 sequential，别加 --mode random（否则状态栏会在多个应用的短语之间乱跳）。
+# 短语里的 {app} 会被替换成当前应用名。
+# 这是作者本机的 74 条，应用名是你自己机器上不一定有的，当示例看。
+Bandizip	正在解压一个 40GB 的包，进度 2%
+Bandizip	解压中，硬盘在哭
+BattlEye Launcher	反作弊正在盯着我，我什么都没干
+BattlEye Launcher	正在过 BattlEye，我发誓我很干净
+Battle.net	暴雪启动器正在更新，更新了什么不知道
+Battle.net	正在等暴雪，暴雪在等自己
+Battlestate Games Launcher	塔科夫启动器正在检查文件，已经半小时
+Battlestate Games Launcher	正在等塔科夫，第 4 次死在加载界面
+Clash Verge	节点换了 8 个，一个都不通
+Clash Verge	正在科学上网，网先科学了我
+DSX	手柄在震动，不知道在震什么
+DSX	正在调震动，调到手指发麻
+DeepSeek Harness	正在跟 AI 讨论怎么让 AI 少干点活
+DeepSeek Harness	正在写提示词，写到第 47 版
+DeepSeek Harness	正在等 AI 回复，顺便思考人生
+Ditto	剪贴板存了 500 条，全是重复的
+Ditto	正在找回半小时前复制的东西
+Elgato Wave Link	麦克风音量调了 12 次，还是不对
+Elgato Wave Link	正在调音，调完发现麦没插
+GHelper	正在调风扇曲线，风扇说不要
+GHelper	性能模式已开，风扇开始起飞
+GameAcc	加速器开着，游戏没开
+GameAcc	正在加速，延迟没变
+Godot Engine	正在做一个没人玩的游戏，第 3 年
+Godot Engine	Godot 又崩了，项目还在
+Microsoft Edge WebView2	有 30 个程序在用 WebView2，谁也不知道是谁
+NekoTrak	正在被一只猫盯着看，它比我认真
+NekoTrak	猫在桌面上巡逻，我是它的辖区
+NekoTrak	正在攒金币养猫，猫比我过得好
+QQ	消息 99+，点开全是群消息
+QQ	正在 QQ 上潜水，第 509 天没说话
+QQ	有人 @ 我，我先假装没看见
+QuellGTA	GTA 的启动器又在转圈
+QuellGTA	正在等 GTA 联网，等到天亮
+Rockstar Games	正在等 Rockstar 加载，已经等了 20 分钟
+Rockstar Games	R 星启动器又转圈了
+Steam Client WebHelper	Steam 在后台偷偷更新第 12 个游戏
+Steam Client WebHelper	正在验证游戏文件完整性，第 4 次
+TeamSpeak Client	语音里没人说话，但麦是开着的
+TeamSpeak Client	正在开麦，其实什么都没说
+Uplink Modification	正在入侵，进度 3%，被抓了
+Uplink Modification	正在黑一个不存在的服务器
+WPS Office	正在写文档，写了三行删了两行
+WPS Office	WPS 又弹广告了，我很平静
+Weixin	微信响了，是三年前的群
+Weixin	正在回消息，回三个字用了十分钟
+Windows 命令处理程序	正在跑一个我自己写的脚本，它可能不该跑
+Windows 资源管理器	正在翻文件夹，第 310 层目录
+Windows 资源管理器	找个文件找了半小时，最后发现就在桌面
+WorkBuddy	正在跟同事协作，其实在摸鱼
+WorkBuddy	工作任务已接收，正在假装理解
+batterybar-modern	电池还有 87%，我已经开始焦虑
+batterybar-modern	正在盯着电量看，越看越少
+easytier-gui	正在给 3 台电脑搭一个只有我用的网
+easytier-gui	虚拟局域网建好了，还是只有我一个人
+easytier-gui	正在把两台电脑连起来，第三台又失踪了
+forzahorizon6	正在墨西哥飙车，撞坏了第 12 棵树
+forzahorizon6	正在跑一场没有终点的比赛
+forzahorizon6	地平线 6 已启动，驾照已注销
+任务管理器	正在看谁占了内存，是我自己
+任务管理器	任务管理器一打开，电脑立刻就快了
+哔哩哔哩直播姬	正在直播，观众是我自己
+哔哩哔哩直播姬	直播姬已就位，就是没人看
+桌面窗口管理器	正在合成桌面，它很努力
+网易UU远程	正在远程别人的电脑，鼠标不是我在动
+网易UU远程	延迟 188 ms，紧张感 100%
+网易UU远程	正在远程，对面屏幕上有 16 个我看不懂的窗口
+记事本	正在记事本里写第 300 行临时代码
+记事本	临时记一下，记完就找不到了
+设置	正在改设置，改完就忘了改了啥
+设置	正在设置里找那个设置
+设置	这个开关到底该开还是该关，我也不确定
+远程桌面连接	正在远程别人的电脑，延迟 188 ms
+远程桌面连接	正在远程，鼠标不是我在动，第 791 次
