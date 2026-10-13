@@ -244,13 +244,65 @@ CREATE TABLE IF NOT EXISTS custom_text_presets (
 )
 ```
 
-数据库文件 `%APPDATA%\NekoTrak\users\<steamid>\data\NekoTrak.db` —— **不是明文 SQLite**。文件头前 48 字节是随机密文，`sqlite3.connect` 会报 `file is not a database`。是 SQLCipher，密钥由 SteamID + 盐派生：
+数据库文件 `%APPDATA%\NekoTrak\users\<steamid>\data\NekoTrak.db` —— **不是明文 SQLite**。文件头前 48 字节是随机密文，`sqlite3.connect` 会报 `file is not a database`。是 SQLCipher。
+
+**一开始的结论是「外部脚本写不进去，必须走 UI」，于是有了整个 UI Automation 工具链。后来发现这个结论是错的 —— 密钥就在软件自己的内存里。**
+
+### 6.1 密钥其实唾手可得
+
+在 `NekoTrak.exe` 里搜到过盐字面量：
 
 ```
 FlowTrak_Secure_Database_Salt_2026
 ```
 
-**结论：外部脚本写不进去，必须走 UI。** 这就是 `tools/` 存在的全部理由。
+顺着它周围的字符串可以看到密钥是怎么用的 —— `src\crypto.rs`、`''PRAGMA key = '';`、`[Crypto] Manifest loaded: steam_id=, db_version=, created_at=`。
+
+**改用内存扫描就一眼看到答案了**：扫 `NekoTrak.exe` 进程的可读内存，找 `x'<64位hex><32位hex>'` 这个形态，命中的那一串长这样：
+
+```
+x'9b53c55d46f367cbf226d4d8aa95194bc24f2610bbd0c547c089bc664befd78c
+  8bff5504cd9a5a97ebd837a6ec8486b5'
+  └─ 32 字节 AES 密钥 ────┘└─ 16 字节 salt ─┘
+```
+
+**判据是后半段的 salt**：它与 `.db` 文件**开头的 16 个字节逐字节相同**。内存里有大量长得像 hex 的东西，只有 salt 对得上的那个才是真钥匙。这比猜「SteamID + 盐怎么派生的」靠谱得多 —— 派生逻辑不用逆，软件自己算完放在那儿了。
+
+### 6.2 有了密钥能干什么
+
+用任意一个导出 `sqlite3_key` 的 sqlite3 DLL（本机用的是 `C:\Program Files\i4Tools9\sqlcipher.dll`，v4.6.1 / sqlite 3.46.1）打开，`PRAGMA key` 之后就是普通 SQLite：
+
+```
+tables (43): achievements, app_achievements, app_identities, apps, categories,
+category_rules, custom_text_presets, daily_stats, flow_sessions, pet_profiles,
+sessions, todos, usage_slices, web_sessions, websites, window_title_filter_rules …
+   custom_text_presets   rows=300
+   apps                  rows=137
+   categories            rows=8
+```
+
+实测写入：
+
+| 操作 | 耗时 |
+|---|---|
+| `DELETE` 300 行 | 0.000 s |
+| `INSERT` 300 行 | 0.129 s（0.43 ms/行） |
+| **合计** | **0.129 s** |
+
+**软件不需要重启。** 写完之后在界面上打开预设对话框，计数当场就是 301（探针行可见）—— 那张表是实时读的，不是启动时载入内存的。这一点是**决定性**的：它意味着硬写入不是「离线改数据」，而是「换一条更快的写通道」。
+
+一个必须避开的坑：Python 侧绑字符串参数要用 **`SQLITE_TRANSIENT`**。用 `SQLITE_STATIC` 的话，`sqlite3_bind_text` 只存指针，而 Python 的 `bytes` 对象在函数返回的瞬间就被回收 —— 表里会留下乱码（实测第一版就是这样，读回 `xb�t�\x7f`）。改对之后中文往返 `MATCH=True`。
+
+### 6.3 不是所有库都能用这把钥匙
+
+`data\NekoTrak.db`（全局库，18 MB）**用同一把钥匙打不开**：
+
+```
+verify exec rc=26  err=file is not a database
+ERROR CORE sqlcipher_page_cipher: hmac check failed for pgno=1
+```
+
+它有自己的 salt。不过预设、分类、应用都在用户库里，全局库一般不需要动。
 
 （`config.json` 里的 `steamDisplayMode` 只有两个值：`merge`（界面显示「自动」）和 `carousel`（轮播）。`steamMergeSeparator` 默认 `" | "`，决定多段状态怎么拼。）
 

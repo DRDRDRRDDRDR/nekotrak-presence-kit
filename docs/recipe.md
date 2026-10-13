@@ -2,7 +2,9 @@
 
 按顺序做。每步都有验证方法，别跳。
 
-前置：NekoTrak 正在运行；PowerShell 5.1+；Python 3（读浏览器历史要用）；管理员权限不是必须的，但读注册表 HKLM 时最好有。
+前置：NekoTrak 正在运行；PowerShell 5.1+；Python 3（读浏览器历史、以及硬写入要用）；管理员权限不是必须的，但读注册表 HKLM 时最好有。
+
+**要硬写入的话还需要一个 DLL**：任意导出 `sqlite3_key` 的 sqlite3 构建（本机用的是 `C:\Program Files\i4Tools9\sqlcipher.dll`）。找不到就整个第 4 步退回 UI 通道，其他步骤不受影响。
 
 ---
 
@@ -118,6 +120,19 @@ print('unbalanced %d' % bad)
 
 ## 第 4 步：灌进预设库
 
+**先试硬写入。** 不用点界面，0.13 秒灌 300 条：
+
+```bash
+python tools/nk-hardwrite.py key                       # 取出密钥（软件要先跑一次）
+python tools/nk-hardwrite.py presets phrases.txt       # 追加
+python tools/nk-hardwrite.py presets phrases.txt --replace   # 清空重来
+python tools/nk-hardwrite.py dump                      # 核对
+```
+
+写完**不用重启软件**，切到预设对话框就能看见（这一点做过专项验证：插入探针行后界面计数当场 +1）。
+
+如果硬写入不通（找不到导出 `sqlite3_key` 的 DLL、或者以后版本换了加密方式），退回 UI 通道：
+
 ```powershell
 cd tools
 
@@ -212,6 +227,12 @@ cd tools
 .\set-category-format.ps1 -Read                     # 回显 8 个分类的当前格式
 ```
 
+或者直接用硬写入，一次设完 7 个分类：
+
+```bash
+python tools/nk-hardwrite.py formats phrases/category-formats/00-personal.tsv
+```
+
 模板变量实测只有两个（扫全 exe，`{app}` @45385128 与 `{title}` @45385133 相邻，是唯一一组）：
 
 - `{app}` —— 替换成当前应用名，**约 400 ms 内跟上切换**
@@ -277,7 +298,8 @@ $t = Measure-Command { & powershell -NoProfile -NonInteractive -ExecutionPolicy 
 - [ ] 语法判据用 UI 亲自验证过（不是抄文档）
 - [ ] 短语里没有 `%COMPUTERNAME%` / `%USERNAME%` / `whoami`
 - [ ] 花括号配对校验通过，`unbalanced 0`
-- [ ] 预设库条数和写入数一致
+- [ ] 预设库条数和写入数一致（硬写入的话：写完在界面上数一遍，**确认软件不用重启**）
+- [ ] 硬写入的字符串绑了 `SQLITE_TRANSIENT`（用 `SQLITE_STATIC` 会写进乱码）
 - [ ] `apps.tsv` 人工扫过一遍，没有卸载器和安装包
 - [ ] 分类后「未分类」接近 0
 - [ ] 分类「状态显示格式」写对了（`未分类` 报了 FAIL 是正常的）

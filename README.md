@@ -4,9 +4,9 @@
 
 三样东西：
 
-1. **`PROMPT.md`** —— 一份可以直接丢给 AI Agent 的提示词。它会带着 AI 从零摸清 NekoTrak 的状态文本机制、把你的浏览器历史和应用清单读出来、生成只属于你的搞怪短语、再通过 Windows UI Automation 直接灌进软件里。
-2. **`phrases/`** —— 426 条现成的中文搞怪短语，按 19 个风格包分好，用软件支持的命令替换语法写成，可以一条一条挑，也可以整包灌。
-3. **`tools/`** —— 7 个 PowerShell 脚本，干活的。批量灌短语、扫描导入本机应用、批量改分类、按分类设状态模板、按前台程序吐词。
+1. **`PROMPT.md`** —— 一份可以直接丢给 AI Agent 的提示词。它会带着 AI 从零摸清 NekoTrak 的状态文本机制、把你的浏览器历史和应用清单读出来、生成只属于你的搞怪短语、再通过 Windows UI Automation 或者直接写数据库，把它们灌进软件里。
+2. **`phrases/`** —— 426 条现成的中文搞怪短语，按 19 个风格包分好，外加 6 套分类状态格式模板。可以一条一条挑，也可以整包灌。
+3. **`tools/`** —— 8 个工具：7 个 PowerShell 脚本走界面，1 个 Python 工具直接写数据库（300 条 0.13 秒）。批量灌短语、扫描导入本机应用、批量改分类、按分类设状态模板、按前台程序吐词。
 
 ---
 
@@ -166,6 +166,37 @@ ${powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\path\to
 
 ---
 
+### 五、跳过 UI：直接硬写入数据库（最快，也最该先读这段话）
+
+上面所有方法都是「模拟人点界面」。软件内部用 SQLCipher 加密自己的数据库，密钥就摆在 `NekoTrak.exe` 的进程内存里 —— 找出来之后，写数据不用再跟界面较劲：
+
+```bash
+python tools/nk-hardwrite.py key                  # 从进程内存里取出密钥
+python tools/nk-hardwrite.py presets presets.txt  # 一次性灌进全部短语
+python tools/nk-hardwrite.py formats map.tsv      # 批量设分类格式
+python tools/nk-hardwrite.py dump                 # 看看库里有什么
+```
+
+**实测：清空 300 条预设 + 重新写入 300 条 = 0.129 秒。** 走界面点一遍是几个小时。软件**不需要重启** —— 表格是实时读的，写完切到预设对话框就能看见（这是实测确认的，304 条计数当场就对上了）。
+
+密钥长这样：
+
+```
+x'9b53c55d…<64 位十六进制密钥>… 8bff5504cd9a5a97ebd837a6ec8486b5'
+  └── 32 字节 AES 密钥 ─────────┘ └── 16 字节 salt ─────────────────┘
+```
+
+后半段 salt 与 `.db` 文件**开头的 16 个字节逐字节相同** —— 这就是为什么能在满内存的十六进制串里认出真密钥：拿文件头去比对，对上的那个就是。
+
+几个注意点：
+
+- **每次写之前自动备份**（`.db` + `-wal` + `-shm` 一起拷进 `dbbackup-<时间戳>/`）。
+- 需要一个**导出 `sqlite3_key` 的 sqlite3 DLL**。套件不附带（发行版杂、体积大），用本机已有的即可，比如 `C:\Program Files\i4Tools9\sqlcipher.dll`。找不到就设环境变量 `NK_SQLCIPHER_DLL` 指过去。
+- 写入时 Python 必须用 `SQLITE_TRANSIENT` 绑参数。用 `SQLITE_STATIC` 的话 Python 的 bytes 对象一返回就被回收，表里会留下乱码 —— 这个坑踩过，工具里已经改对了。
+- **全局库（`data\NekoTrak.db`）用同一把钥匙打不开**，它有自己的 salt。预设、分类、应用都在用户库里，全局库一般不用动。
+
+---
+
 ## 一个必须知道的限制：命令是固定 5 秒跑一次
 
 `${...}` 命令**不是按需触发，是固定每 5.00 秒跑一次**（自记账实测：150 秒 42 次，间隔 5.00 s 雷打不动）。所以命令段永远慢半拍 —— 这是软件节奏，改不了，`presenceIntervalMs` 之类的配置项在 exe 里搜不到（22 个候选字段名全 0 命中）。
@@ -187,6 +218,7 @@ ${powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\path\to
 | `scan-installed-apps.ps1` | 扫描本机应用，产出 TSV |
 | `set-category-format.ps1` | 给分类设「状态显示格式」——**原生通道，比 `${}` 命令快得多** |
 | `fg-phrase.ps1` | 按前台程序吐词（给 `${}` 调用的） |
+| `nk-hardwrite.py` | **硬写入**：直连加密数据库读写预设/分类格式，不走界面。300 条约 0.13 秒 |
 
 **全部要求 PowerShell 5.1+，全部存成 UTF-8 with BOM。** 这不是洁癖 —— 无 BOM 的 UTF-8 中文 .ps1 会被 PS 5.1 按 GBK 解析，报一堆莫名其妙的 `Missing closing ')'`。改完脚本记得补回 BOM：
 
@@ -232,7 +264,7 @@ nekotrak-presence-kit/
 │   ├── category-formats/     # 6 套分类状态格式模板（.tsv）
 │   ├── all-300.txt           # 个人包合并版
 │   └── all-genre-126.txt     # 体裁包合并版
-├── tools/                    # 7 个 PowerShell 脚本
+├── tools/                    # 7 个 PowerShell 脚本 + 1 个 Python 硬写入工具
 └── docs/
     ├── mechanism.md          # 机制取证全过程：怎么证明 ${} 才执行
     ├── uia-notes.md          # UIA 通道细节与全部踩坑
