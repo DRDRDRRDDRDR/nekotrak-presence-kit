@@ -6,7 +6,7 @@
 
 1. **`PROMPT.md`** —— 一份可以直接丢给 AI Agent 的提示词。它会带着 AI 从零摸清 NekoTrak 的状态文本机制、把你的浏览器历史和应用清单读出来、生成只属于你的搞怪短语、再通过 Windows UI Automation 直接灌进软件里。
 2. **`phrases/`** —— 426 条现成的中文搞怪短语，按 19 个风格包分好，用软件支持的命令替换语法写成，可以一条一条挑，也可以整包灌。
-3. **`tools/`** —— 6 个 PowerShell 脚本，干活的。批量灌短语、扫描导入本机应用、批量改分类、按前台程序吐词。
+3. **`tools/`** —— 7 个 PowerShell 脚本，干活的。批量灌短语、扫描导入本机应用、批量改分类、按分类设状态模板、按前台程序吐词。
 
 ---
 
@@ -32,7 +32,9 @@ NekoTrak 的「自定义文本」有个命令替换语法 —— 输入框的 pl
 正在找回 hotmail，第 ${echo %RANDOM%} 次
 ```
 
-`${}` 里跑的是 cmd，所以 cmd 那套变量能直接用：`%RANDOM%`、`%TIME%`、`%TIME:~0,5%`、`%DATE%`、`%COMPUTERNAME%`、`%USERNAME%`。
+`${}` 里跑的是 cmd，所以 cmd 那套变量能直接用：`%RANDOM%`、`%TIME%`、`%TIME:~0,5%`、`%DATE%`。
+
+（`%COMPUTERNAME%` 和 `%USERNAME%` 也能用，但它们会把你的机器名和账户名广播到 Steam 状态栏上。这套短语包刻意不用它们 —— 需要露面就写死一个代号。）
 
 **副作用警告**：`${}` 里是真正的命令行执行，不是沙箱。`${echo hi > C:\x.txt}` 是真会写文件的。别把来路不明的字符串贴进去。
 
@@ -112,9 +114,36 @@ cd tools
 
 分类名只能是这 8 个：`未分类 游戏 媒体 社交 工作 创作 参考 工具`。
 
-### 三、让短语跟着你在用的 App 变
+### 三、让短语跟着你在用的 App 变（原生通道，推荐）
 
-NekoTrak 的「应用活动」段本来就会随前台 App 变（显示应用名和图标），但**你选中的那条自定义文本是死的**。想让短语也跟着变，把这条整串丢进「自定义文本项」：
+**这条是软件自带的，不用跑任何脚本。** 每个分类可以有自己的「状态显示格式」。当前台应用属于某个分类时，就用那个分类的模板渲染状态。
+
+路径：`分类` → 选中分类 → `编辑` → 「状态显示格式」输入框。
+
+模板变量实测只有两个：
+
+| 变量 | 行为 |
+|---|---|
+| `{app}` | 替换成当前应用名，**约 400 ms 内跟上切换** |
+| `{title}` | 窗口标题，实测常为空/原样输出，别依赖 |
+| 其他 `{xxx}` | 一律原样输出，不报错 —— 所以别写 `{song}`/`{time}` 这类幻觉变量 |
+
+批量设置：
+
+```powershell
+cd tools
+.\set-category-format.ps1 -Category 游戏 -Format '{app} 已启动 | 这局我很认真'
+.\set-category-format.ps1 -MapFile formats.tsv    # 每行「分类名<TAB>格式串」
+.\set-category-format.ps1 -Read                   # 回显全部 8 个分类的当前格式
+```
+
+**`未分类` 是内置分类，它的编辑对话框只有颜色标签，没有「状态显示格式」字段。** 这是软件行为，不是脚本问题 —— 脚本会如实报 `FAIL`。
+
+格式里可以混 `${...}` 命令段，但那样就退回 5 秒节拍了。想「跟得上切换」就纯用 `{app}`。
+
+### 四、让短语跟着你在用的 App 变（脚本通道）
+
+上一节是软件原生的。如果你要的变体比「8 个分类」更细 —— 比如同一个分类里不同程序说不同话 —— 就得自己算。把这条整串丢进「自定义文本项」：
 
 ```
 ${powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\path\to\tools\fg-phrase.ps1}
@@ -122,7 +151,17 @@ ${powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\path\to
 
 改 `tools/fg-phrase.ps1` 里的 `$Rules` 表就能加规则。
 
-**代价**：每次状态刷新都要起一次 PowerShell，实测单次约 1.4 秒。状态会比平时慢半拍，能接受再开。
+**代价**：每次状态刷新都要起一次 PowerShell，实测单次约 1.4 秒。软件对命令有 **2000 ms 硬超时**，超时就丢掉这次输出（日志里能看到 `[STEAM] command execution timed out (2000 ms)`）。1.4 秒离上限太近，实际经常被判超时。要么改用原生的分类格式，要么把脚本换成编译好的 exe（本机用 Rust 重写后降到 11 ms，超时告警归零）。
+
+---
+
+## 一个必须知道的限制：命令是固定 5 秒跑一次
+
+`${...}` 命令**不是按需触发，是固定每 5.00 秒跑一次**（自记账实测：150 秒 42 次，间隔 5.00 s 雷打不动）。所以命令段永远慢半拍 —— 这是软件节奏，改不了，`presenceIntervalMs` 之类的配置项在 exe 里搜不到（22 个候选字段名全 0 命中）。
+
+`{app}` 不走这条路，所以快得多。
+
+另外，UI 上那个「Steam 状态预览」**每约 15 秒才重绘一次**。别拿它测速度 —— 拿它测只会测出面板的刷新率，测不到状态的真实更新率（这是真踩过的坑，一度以为命令 15 秒才跑一次）。
 
 ---
 
@@ -135,6 +174,7 @@ ${powershell -NoProfile -NonInteractive -ExecutionPolicy Bypass -File C:\path\to
 | `add-apps.ps1` | 批量导入应用（应用 → 新建应用） |
 | `set-category.ps1` | 批量改应用分类 |
 | `scan-installed-apps.ps1` | 扫描本机应用，产出 TSV |
+| `set-category-format.ps1` | 给分类设「状态显示格式」——**原生通道，比 `${}` 命令快得多** |
 | `fg-phrase.ps1` | 按前台程序吐词（给 `${}` 调用的） |
 
 **全部要求 PowerShell 5.1+，全部存成 UTF-8 with BOM。** 这不是洁癖 —— 无 BOM 的 UTF-8 中文 .ps1 会被 PS 5.1 按 GBK 解析，报一堆莫名其妙的 `Missing closing ')'`。改完脚本记得补回 BOM：
@@ -180,7 +220,7 @@ nekotrak-presence-kit/
 │   ├── packs/                # 19 个风格包，426 条
 │   ├── all-300.txt           # 个人包合并版
 │   └── all-genre-126.txt     # 体裁包合并版
-├── tools/                    # 6 个 PowerShell 脚本
+├── tools/                    # 7 个 PowerShell 脚本
 └── docs/
     ├── mechanism.md          # 机制取证全过程：怎么证明 ${} 才执行
     ├── uia-notes.md          # UIA 通道细节与全部踩坑
