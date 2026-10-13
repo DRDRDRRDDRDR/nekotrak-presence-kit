@@ -1,0 +1,30 @@
+正在写第 ${echo %RANDOM%} 行代码，其中 ${echo %RANDOM%} 行是注释
+正在调试，断点设了 ${echo %RANDOM%} 个
+正在等编译，第 ${echo %RANDOM%} 分钟
+编译通过，第 ${echo %RANDOM%} 次
+正在解决第 ${echo %RANDOM%} 个 merge conflict
+git push 失败，第 ${echo %RANDOM%} 次
+正在给仓库写第 ${echo %RANDOM%} 个 README
+正在开源第 ${echo %RANDOM%} 个项目，star 数 ${echo %RANDOM%}
+正在看自己的 star 数，第 ${echo %RANDOM%} 次
+正在被 ${echo %RANDOM%} 个 AI 同时写代码
+正在给 AI 修第 ${echo %RANDOM%} 个 bug，bug 是 AI 写的
+正在 review AI 写的第 ${echo %RANDOM%} 行代码
+VS Code 里开了 ${echo %RANDOM%} 个终端，全在跑
+正在装第 ${echo %RANDOM%} 个依赖，node_modules 已经 ${echo %RANDOM%} GB
+pnpm install 跑了第 ${echo %RANDOM%} 次
+正在配环境，第 ${echo %RANDOM%} 小时
+正在重启 IDE，第 ${echo %RANDOM%} 次
+Xshell 连着 ${echo %RANDOM%} 台机器，一台都没用
+正在 ssh 到第 ${echo %RANDOM%} 台服务器
+正在给第 ${echo %RANDOM%} 台服务器改配置，改完就忘了
+Fiddler 抓包中，抓到了 ${echo %RANDOM%} 个请求，一个都看不懂
+正在用 ${echo %RANDOM%} 个虚拟机模拟 ${echo %RANDOM%} 台电脑
+VMware 里跑着第 ${echo %RANDOM%} 个系统，主机快没电了
+正在虚拟机里装第 ${echo %RANDOM%} 个系统
+沙箱里正在运行 ${echo %RANDOM%} 个可疑程序
+Sandboxie 里关了 ${echo %RANDOM%} 个样本，一个都不敢真跑
+正在用 RustDesk 或 ToDesk 看第 ${echo %RANDOM%} 台远程电脑
+远程桌面连接中 | 延迟 ${echo %RANDOM%} ms
+正在远程别人的电脑，鼠标不是我的
+正在被 ${echo %RANDOM%} 个人远程围观

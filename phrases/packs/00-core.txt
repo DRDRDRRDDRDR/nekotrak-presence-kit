@@ -1,0 +1,47 @@
+DRRD 正在假装很忙
+DRRD 在这里，JackBright 在别处
+GitHub 上的 DRDRDRRDDRDR，正在 ${echo %RANDOM%} 个标签页之间迷路
+这台电脑属于 DRRD，但 DRRD 现在不属于这台电脑
+正在找回 hotmail，第 ${echo %RANDOM%} 次
+学信网查询中，请勿打扰
+天津邮政编码 300000，但我在广西吃萨莉亚
+385 泰铢 = ${echo %RANDOM%} 人民币，汇率实时浮动
+where am i
+正在搜索：网页搜索api（用来搜索网页搜索api）
+一分机场 ${echo %RANDOM%} 号节点，纯净IP 认证中
+workbuddy 绑不上 github，第 ${echo %RANDOM%} 天
+逃离塔科夫 | 第 ${echo %RANDOM%} 次死在海关
+正在被大树守卫教育 | 第 ${echo %RANDOM%} 次
+Gwyn, Lord of Cinder | ${echo %RANDOM%} BPM
+PAYDAY 2 | 正在抢银行，用的是 mod 19900
+hackmud | 正在黑 ${echo %RANDOM%} 号机
+Uplink | 正在入侵 DRRD
+NEO Scavenger | 在翻垃圾桶，找到 ${echo %RANDOM%} 个罐头
+Brotato | 存活 ${echo %RANDOM%} 秒
+Slay the Spire 2 | 第 ${echo %RANDOM%} 层暴毙
+DDNet | 被 ${echo %RANDOM%} 个人甩开
+Barotrauma 潜渊症 | 潜艇下沉 ${echo %RANDOM%} 米
+正在给 ${echo %RANDOM%} 个游戏打汉化
+正在用 ${echo %RANDOM%} 条 VBCABLE 把自己绕晕
+Voicemeeter 路由 ${echo %RANDOM%} 路，我自己也看不懂
+Clownfish 变声中 | 现在的声音不像人类
+FL Studio | 第 ${echo %RANDOM%} 小节，还没编出来
+Melodyne 修音中 | 修得比原唱还准
+Cider 播放中 💿 | 假装是 Apple Music 用户
+正在解锁第 ${echo %RANDOM%} 台手机
+winra1n 越狱中 | 变砖概率 ${echo %RANDOM%}%
+SteamTools 入库 ${echo %RANDOM%} 个游戏，Steam 不知道
+Cheat Engine 已附加 | 目标进程保密
+WeMod 开着 ${echo %RANDOM%} 个修改器，一个都没用上
+正在用 ${echo %RANDOM%} 个加速器加速同一个游戏
+Neko 正在追鼠标 | 已追 ${echo %RANDOM%} 圈
+专注中 | 猫说不许摸鱼
+正在被一只 ${echo %RANDOM%} 像素的猫监督
+猫在桌面上拉屎，第 ${echo %RANDOM%} 坨
+Neko 的饱食度是 ${echo %RANDOM%}，我的饱食度未知
+${echo %RANDOM%}
+在线，但精神不在线
+${echo %TIME:~0,5%} 了，还在电脑前
+喵
+此状态由 ${echo %RANDOM%} 号进程生成
+正在忙（忙着看这个状态）

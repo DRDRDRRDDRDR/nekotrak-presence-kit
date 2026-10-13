@@ -1,0 +1,40 @@
+火绒拦了 ${echo %RANDOM%} 次，全是误报
+Defender 和火绒同时在跑，谁也别想赢
+正在给第 ${echo %RANDOM%} 个文件加白名单
+正在无视第 ${echo %RANDOM%} 个安全提醒
+正在下第 ${echo %RANDOM%} 个来自 52pojie 的工具
+正在 52pojie 翻第 ${echo %RANDOM%} 页
+正在用 ${echo %RANDOM%} 个破解工具破解一个免费软件
+正在给软件打第 ${echo %RANDOM%} 个补丁，补丁比软件还大
+学习版装好了，第 ${echo %RANDOM%} 次
+正在把正版卸载，装学习版，再装回正版
+正在给 ${echo %RANDOM%} 个游戏加汉化，加完报错
+汉化补丁打第 ${echo %RANDOM%} 次，字体还是乱码
+正在解决第 ${echo %RANDOM%} 个乱码问题
+正在查第 ${echo %RANDOM%} 个报错代码
+报错 0x${echo %RANDOM%}，正在搜索这个错误
+搜索这个错误花了 ${echo %RANDOM%} 分钟，结论是重装
+正在重装第 ${echo %RANDOM%} 个软件
+正在卸载第 ${echo %RANDOM%} 个刚装完的软件
+刚装完就卸载，第 ${echo %RANDOM%} 次
+正在装第 ${echo %RANDOM%} 个"以后可能会用"的软件
+下载了 ${echo %RANDOM%} 个软件，装了 ${echo %RANDOM%} 个，用了 0 个
+正在给电脑装第 ${echo %RANDOM%} 个没用的工具
+正在删第 ${echo %RANDOM%} 个自己写的脚本
+正在给脚本改第 ${echo %RANDOM%} 个 bug，改出新 bug ${echo %RANDOM%} 个
+正在写第 ${echo %RANDOM%} 个自动化脚本，用来省 ${echo %RANDOM%} 秒
+正在自动化一件 ${echo %RANDOM%} 分钟的手工活，花了 ${echo %RANDOM%} 小时
+正在用 ${echo %RANDOM%} 行代码解决一个不用代码能解决的问题
+正在给这台电脑安排第 ${echo %RANDOM%} 个定时任务
+计划任务里有 ${echo %RANDOM%} 个任务，执行成功的 ${echo %RANDOM%} 个
+服务列表里有 ${echo %RANDOM%} 个服务，我不认识其中 ${echo %RANDOM%} 个
+正在查第 ${echo %RANDOM%} 个后台进程是谁开的
+正在关闭第 ${echo %RANDOM%} 个自启动项
+开机用了 ${echo %RANDOM%} 秒，其中 ${echo %RANDOM%} 秒在等自启
+正在优化开机速度，优化完更慢了
+正在跑第 ${echo %RANDOM%} 个跑分，分数变化 ${echo %RANDOM%} 分
+正在清理注册表，删了 ${echo %RANDOM%} 项，后果未知
+正在备份注册表，以防万一
+正在给自己留后路，第 ${echo %RANDOM%} 次
+这次一定不会搞坏，第 ${echo %RANDOM%} 次
+已经做好重装准备了，第 ${echo %RANDOM%} 次

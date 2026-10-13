@@ -1,0 +1,24 @@
+正在认真工作，第 ${echo %RANDOM%} 秒
+正在工作（定义：电脑开着）
+摸鱼指数 ${echo %RANDOM%}%
+生产力 ${echo %RANDOM%}%，剩余 ${echo %RANDOM%}%
+今天已经专注 ${echo %RANDOM%} 分钟，其中 ${echo %RANDOM%} 分钟在发呆
+正在假装这个番茄钟有用
+番茄钟第 ${echo %RANDOM%} 轮，我就没停过
+${echo %TIME:~0,5%} | 还在电脑前 | 第 ${echo %RANDOM%} 天
+凌晨了，第 ${echo %RANDOM%} 次发誓明天早睡
+正在用 ${echo %RANDOM%} 个进程伪装成一台很忙的电脑
+输入法候选词里有我不想让别人看到的东西
+正在打字，已经打了 ${echo %RANDOM%} 个字
+搜狗输入法第 ${echo %RANDOM%} 次猜错我想打的词
+正在复制粘贴，第 ${echo %RANDOM%} 次
+剪贴板里有 ${echo %RANDOM%} 条内容，最新的那条不敢看
+Ditto 里存着 ${echo %RANDOM%} 条历史，其中有几条不该存
+Listary 弹出第 ${echo %RANDOM%} 次，我要找的文件还是没找到
+Everything 搜到了 ${echo %RANDOM%} 个结果，都不是我要的
+正在开机自启第 ${echo %RANDOM%} 个程序
+任务管理器里有 ${echo %RANDOM%} 个进程，我不认识其中 ${echo %RANDOM%} 个
+正在结束第 ${echo %RANDOM%} 个不认识的进程
+内存占用 ${echo %RANDOM%}%，全是浏览器的
+正在开第 ${echo %RANDOM%} 个浏览器标签页，内存还够
+浏览器开了 ${echo %RANDOM%} 个标签页，一个都不敢关

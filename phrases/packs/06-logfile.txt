@@ -1,0 +1,26 @@
+[INFO] DRRD 已连接 · 第 ${echo %RANDOM%} 次
+[WARN] 检测到摸鱼行为，已忽略
+[ERROR] 找不到工作的意义 (code=${echo %RANDOM%})
+[FATAL] 无法继续：太困了
+0x${echo %RANDOM%} 处的摸鱼异常未处理
+[DEBUG] 断点命中 ${echo %RANDOM%} 次，全是意料之外
+[INFO] 正在加载第 ${echo %RANDOM%} 个未完成的项目
+[WARN] 内存不足，正在释放 ${echo %RANDOM%} 条记忆
+[TRACE] 光标停留第 ${echo %RANDOM%} 分钟，位置未变
+[ERROR] connect() timed out：连接不上灵感
+[INFO] 用户空闲 ${echo %RANDOM%} 秒（这个数字不可信）
+[WARN] 检测到 ${echo %RANDOM%} 个未保存的窗口
+[FATAL] 本次会话将于 ${echo %RANDOM%} 年后结束
+System.NullReferenceException: 对象引用未设置为工作的实例
+[INFO] 已忽略第 ${echo %RANDOM%} 个警告
+[WARN] 磁盘空间不足，无法存储更多遗憾
+[ERROR] 语音输入失败：用户沉默 ${echo %RANDOM%} 分钟
+[INFO] 自动保存中… 已保存 ${echo %RANDOM%} 个空文件
+[WARN] 检测到重复劳动，已合并（并未合并）
+[FATAL] 栈溢出：想法太多
+[INFO] 重试第 ${echo %RANDOM%} 次
+[ERROR] 权限不足：无法访问「自律」
+[WARN] 未捕获的 promise：明天再说
+[INFO] 服务启动完成，用时 ${echo %RANDOM%} 毫秒（假的）
+[ERROR] 文件未找到：motivation.txt
+[INFO] 进程 ${echo %RANDOM%} 已退出，退出码 0（假装顺利）

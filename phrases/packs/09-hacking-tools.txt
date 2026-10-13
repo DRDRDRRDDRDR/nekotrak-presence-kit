@@ -1,0 +1,12 @@
+解锁第 ${echo %RANDOM%} 台手机，第 ${echo %RANDOM%} 次失败
+正在给 iPhone 第 ${echo %RANDOM%} 次尝试越狱
+爱思助手已连接第 ${echo %RANDOM%} 台设备
+正在备份第 ${echo %RANDOM%} 个 iPhone，备份完就换手机
+SteamTools 入库第 ${echo %RANDOM%} 天，账号还没事
+Steam Game Idler 正在帮我挂第 ${echo %RANDOM%} 个游戏
+正在用 ${echo %RANDOM%} 个工具挂机，人已经睡了
+Cheat Engine 附加了 ${echo %RANDOM%} 次，一次都没改成功
+伏特修改器 | 第 ${echo %RANDOM%} 个功能，先试试会不会崩
+UU / 迅游 / 雷神 / 奇游 / 小黑盒 / HiCN —— 一共 ${echo %RANDOM%} 个，同时开着
+加速器显示延迟 ${echo %RANDOM%} ms，实际 ${echo %RANDOM%} ms
+正在用 ${echo %RANDOM%} 个加速器互相加速

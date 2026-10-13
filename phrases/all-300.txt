@@ -1,0 +1,300 @@
+DRRD 正在假装很忙
+DRRD 在这里，JackBright 在别处
+GitHub 上的 DRDRDRRDDRDR，正在 ${echo %RANDOM%} 个标签页之间迷路
+这台电脑属于 DRRD，但 DRRD 现在不属于这台电脑
+正在找回 hotmail，第 ${echo %RANDOM%} 次
+学信网查询中，请勿打扰
+天津邮政编码 300000，但我在广西吃萨莉亚
+385 泰铢 = ${echo %RANDOM%} 人民币，汇率实时浮动
+where am i
+正在搜索：网页搜索api（用来搜索网页搜索api）
+一分机场 ${echo %RANDOM%} 号节点，纯净IP 认证中
+workbuddy 绑不上 github，第 ${echo %RANDOM%} 天
+逃离塔科夫 | 第 ${echo %RANDOM%} 次死在海关
+正在被大树守卫教育 | 第 ${echo %RANDOM%} 次
+Gwyn, Lord of Cinder | ${echo %RANDOM%} BPM
+PAYDAY 2 | 正在抢银行，用的是 mod 19900
+hackmud | 正在黑 ${echo %RANDOM%} 号机
+Uplink | 正在入侵 DRRD
+NEO Scavenger | 在翻垃圾桶，找到 ${echo %RANDOM%} 个罐头
+Brotato | 存活 ${echo %RANDOM%} 秒
+Slay the Spire 2 | 第 ${echo %RANDOM%} 层暴毙
+DDNet | 被 ${echo %RANDOM%} 个人甩开
+Barotrauma 潜渊症 | 潜艇下沉 ${echo %RANDOM%} 米
+正在给 ${echo %RANDOM%} 个游戏打汉化
+正在用 ${echo %RANDOM%} 条 VBCABLE 把自己绕晕
+Voicemeeter 路由 ${echo %RANDOM%} 路，我自己也看不懂
+Clownfish 变声中 | 现在的声音不像人类
+FL Studio | 第 ${echo %RANDOM%} 小节，还没编出来
+Melodyne 修音中 | 修得比原唱还准
+Cider 播放中 💿 | 假装是 Apple Music 用户
+正在解锁第 ${echo %RANDOM%} 台手机
+winra1n 越狱中 | 变砖概率 ${echo %RANDOM%}%
+SteamTools 入库 ${echo %RANDOM%} 个游戏，Steam 不知道
+Cheat Engine 已附加 | 目标进程保密
+WeMod 开着 ${echo %RANDOM%} 个修改器，一个都没用上
+正在用 ${echo %RANDOM%} 个加速器加速同一个游戏
+Neko 正在追鼠标 | 已追 ${echo %RANDOM%} 圈
+专注中 | 猫说不许摸鱼
+正在被一只 ${echo %RANDOM%} 像素的猫监督
+猫在桌面上拉屎，第 ${echo %RANDOM%} 坨
+Neko 的饱食度是 ${echo %RANDOM%}，我的饱食度未知
+${echo %RANDOM%}
+在线，但精神不在线
+${echo %TIME:~0,5%} 了，还在电脑前
+喵
+此状态由 ${echo %RANDOM%} 号进程生成
+正在忙（忙着看这个状态）
+DRRD 已上线，但 DRRD 本人还没到
+DRRD 不是用户名，是一种生活方式
+别找了，DRRD 就在这里
+DRRD 正在用 ${echo %RANDOM%} 个身份同时在线
+DRRD 的两台显示器都不同意对方
+DRRD 正在假装自己只有一个显示器
+以 DRRD 之名，把 ${echo %RANDOM%} 个窗口全部打开
+DRRD 在这儿，但 DRRD 不知道自己在这儿
+正在以 DRRD 的身份做一些不方便细说的事
+DRRD 没有在摸鱼，DRRD 在等编译
+DRRD 今天的 GitHub 提交数是 ${echo %RANDOM%}，其中 ${echo %RANDOM%} 个是 README
+正在搬砖，第 ${echo %RANDOM%} 块
+DRRD 正在复习三个月前自己写的代码，并且不认识它
+DRRD 正在给 AI 写提示词，AI 正在给 DRRD 写代码
+DRRD 的键盘今天已经按了 ${echo %RANDOM%} 次，其中一半是 Ctrl+Z
+hotmail 找回失败，第 ${echo %RANDOM%} 天
+d 多少 myr 等于 5 人民币，这个问题我还在想
+who am i，其实我也不太确定
+正在搜索：网页搜索 api（用来搜索网页搜索 api）
+一分机场 ${echo %RANDOM%} 号节点，纯净 IP 认证中
+纯净 IP 认证失败，第 ${echo %RANDOM%} 次
+google 工单已提交，回信时间 ${echo %RANDOM%} 年后
+正在找免费的 codex 额度，第 ${echo %RANDOM%} 个号
+正在薅 ${echo %RANDOM%} 家 API 的免费额度
+正在看 API 计费页面，心跳每分钟 ${echo %RANDOM%} 次
+正在给 ${echo %RANDOM%} 个 AI 工具分配余额
+一分钱没花，token 用了 ${echo %RANDOM%} 万
+逃离塔科夫 | 正在海关蹲 ${echo %RANDOM%} 分钟，然后被一枪
+逃离塔科夫 | 装备没了，${echo %RANDOM%} 个保险也不赔
+艾尔登法环 | 死了 ${echo %RANDOM%} 次，仍然是好游戏
+艾尔登法环 | 正在找 ${echo %RANDOM%} 个赐福点
+黑暗之魂 | 钟还没敲，先死 ${echo %RANDOM%} 次
+PAYDAY 2 | 潜行失败，第 ${echo %RANDOM%} 秒
+PAYDAY 2 | 警笛响了 ${echo %RANDOM%} 次，跟我没关系
+NEO Scavenger | 被 ${echo %RANDOM%} 个流浪汉追着跑
+Brotato | 第 ${echo %RANDOM%} 波，买不起装备
+Slay the Spire 2 | 牌组里全是废牌，共 ${echo %RANDOM%} 张
+DDNet | 挂机第 ${echo %RANDOM%} 名
+潜渊症 | 第 ${echo %RANDOM%} 个船员在船外，没人发现
+正在给第 ${echo %RANDOM%} 个游戏装 mod，装完又不想玩了
+正在 ModWorkshop 翻第 ${echo %RANDOM%} 页
+正在用 ${echo %RANDOM%} 个 mod 修复一个 mod 引发的问题
+为战地 6 排队第 ${echo %RANDOM%} 名
+极限竞速：地平线 6 | 时速 ${echo %RANDOM%} 公里撞树
+GTA 在线 | 正在被 ${echo %RANDOM%} 个人追杀
+正在 MikiGTAOL 盒子里翻 ${echo %RANDOM%} 个功能，一个都不敢开
+正在和 ${echo %RANDOM%} 个人抢同一个战局
+正在被 ${echo %RANDOM%} 个平台同时封号
+Voicemeeter | 第 ${echo %RANDOM%} 条虚拟线，声音去哪了我不知道
+刚把 ASIO Link Pro 装好，第 ${echo %RANDOM%} 次
+Equalizer APO 里正在跑 ${echo %RANDOM%} 条滤波器
+正在用 ${echo %RANDOM%} 种变声器尝试变成别人
+Soundpad 里存了 ${echo %RANDOM%} 个音效，全是噪音
+疯歌音效平台 | 正在播放第 ${echo %RANDOM%} 个诡异音效
+FL Studio | 工程里 ${echo %RANDOM%} 个轨道，全空
+Studio One 开着第 ${echo %RANDOM%} 个工程
+修音修到第 ${echo %RANDOM%} 遍，原唱已经不认识自己了
+Kontakt 里加载了 ${echo %RANDOM%} GB 音色，一个音没弹
+正在为第 ${echo %RANDOM%} 个小节加混响
+正在给 ${echo %RANDOM%} 个 VST 插件分配内存
+Serato DJ Pro | 正在搓第 ${echo %RANDOM%} 张碟
+Cider 正在播放第 ${echo %RANDOM%} 首歌，没人听
+网易云音乐 | 正在听第 ${echo %RANDOM%} 首，全是日推
+Spotify 会员过期第 ${echo %RANDOM%} 天
+正在下载第 ${echo %RANDOM%} 首歌，下完就换平台
+解锁第 ${echo %RANDOM%} 台手机，第 ${echo %RANDOM%} 次失败
+正在给 iPhone 第 ${echo %RANDOM%} 次尝试越狱
+爱思助手已连接第 ${echo %RANDOM%} 台设备
+正在备份第 ${echo %RANDOM%} 个 iPhone，备份完就换手机
+SteamTools 入库第 ${echo %RANDOM%} 天，账号还没事
+Steam Game Idler 正在帮我挂第 ${echo %RANDOM%} 个游戏
+正在用 ${echo %RANDOM%} 个工具挂机，人已经睡了
+Cheat Engine 附加了 ${echo %RANDOM%} 次，一次都没改成功
+伏特修改器 | 第 ${echo %RANDOM%} 个功能，先试试会不会崩
+UU / 迅游 / 雷神 / 奇游 / 小黑盒 / HiCN —— 一共 ${echo %RANDOM%} 个，同时开着
+加速器显示延迟 ${echo %RANDOM%} ms，实际 ${echo %RANDOM%} ms
+正在用 ${echo %RANDOM%} 个加速器互相加速
+Neko 正在桌面上发呆，已经 ${echo %RANDOM%} 分钟
+Neko 又开始抓屏幕了，第 ${echo %RANDOM%} 次
+猫说这个状态写得不错，奖励 ${echo %RANDOM%} 个金币
+正在和一只猫抢夺桌面控制权
+Neko 的等级是 ${echo %RANDOM%}，我才 1 级
+已经养猫 ${echo %RANDOM%} 天，猫还是不理我
+猫在睡觉，第 ${echo %RANDOM%} 小时
+Neko 跑到了第 ${echo %RANDOM%} 个显示器上
+我要买第 ${echo %RANDOM%} 只猫，金币不够
+宠物模式 wanderer | 正在游荡第 ${echo %RANDOM%} 圈
+DRRD 已上线，DRRD 已下线，DRRD 又上线了
+在线状态由 ${echo %RANDOM%} 号线程维护
+正在刷新状态，第 ${echo %RANDOM%} 次
+正在看着这个状态发呆
+这个状态是 ${echo %RANDOM%} 秒前生成的，已经过期了
+状态更新中，请稍候 ${echo %RANDOM%} 年
+本条状态包含 ${echo %RANDOM%} 个字符的诚意
+正在用一个 ${echo %RANDOM%} 位随机数证明我活着
+不要问我状态栏为什么在动，我也不懂
+正在把状态栏当树洞
+正在认真工作，第 ${echo %RANDOM%} 秒
+正在工作（定义：电脑开着）
+摸鱼指数 ${echo %RANDOM%}%
+生产力 ${echo %RANDOM%}%，剩余 ${echo %RANDOM%}%
+今天已经专注 ${echo %RANDOM%} 分钟，其中 ${echo %RANDOM%} 分钟在发呆
+正在假装这个番茄钟有用
+番茄钟第 ${echo %RANDOM%} 轮，我就没停过
+${echo %TIME:~0,5%} | 还在电脑前 | 第 ${echo %RANDOM%} 天
+凌晨了，第 ${echo %RANDOM%} 次发誓明天早睡
+正在用 ${echo %RANDOM%} 个进程伪装成一台很忙的电脑
+输入法候选词里有我不想让别人看到的东西
+正在打字，已经打了 ${echo %RANDOM%} 个字
+搜狗输入法第 ${echo %RANDOM%} 次猜错我想打的词
+正在复制粘贴，第 ${echo %RANDOM%} 次
+剪贴板里有 ${echo %RANDOM%} 条内容，最新的那条不敢看
+Ditto 里存着 ${echo %RANDOM%} 条历史，其中有几条不该存
+Listary 弹出第 ${echo %RANDOM%} 次，我要找的文件还是没找到
+Everything 搜到了 ${echo %RANDOM%} 个结果，都不是我要的
+正在开机自启第 ${echo %RANDOM%} 个程序
+任务管理器里有 ${echo %RANDOM%} 个进程，我不认识其中 ${echo %RANDOM%} 个
+正在结束第 ${echo %RANDOM%} 个不认识的进程
+内存占用 ${echo %RANDOM%}%，全是浏览器的
+正在开第 ${echo %RANDOM%} 个浏览器标签页，内存还够
+浏览器开了 ${echo %RANDOM%} 个标签页，一个都不敢关
+正在 OBS 里调第 ${echo %RANDOM%} 个场景，直播还没开
+直播中，观众 ${echo %RANDOM%} 人，其中 ${echo %RANDOM%} 个是我自己
+哔哩哔哩直播姬已就绪，第 ${echo %RANDOM%} 天没开播
+正在给直播加第 ${echo %RANDOM%} 层滤镜
+弹幕姬正在念第 ${echo %RANDOM%} 条弹幕，全是自己发的
+DaVinci Resolve 正在渲染，进度 ${echo %RANDOM%}%，卡住不动
+正在剪辑第 ${echo %RANDOM%} 版，还是第一版好看
+剪映进度 ${echo %RANDOM%}%，导出失败第 ${echo %RANDOM%} 次
+正在给视频加第 ${echo %RANDOM%} 个字幕
+Cinema 4D 正在渲染第 ${echo %RANDOM%} 帧，预计 ${echo %RANDOM%} 年后完成
+正在等一个渲染，等了 ${echo %RANDOM%} 小时
+正在用 ${echo %RANDOM%} 个软件编辑同一张图
+正在写第 ${echo %RANDOM%} 行代码，其中 ${echo %RANDOM%} 行是注释
+正在调试，断点设了 ${echo %RANDOM%} 个
+正在等编译，第 ${echo %RANDOM%} 分钟
+编译通过，第 ${echo %RANDOM%} 次
+正在解决第 ${echo %RANDOM%} 个 merge conflict
+git push 失败，第 ${echo %RANDOM%} 次
+正在给仓库写第 ${echo %RANDOM%} 个 README
+正在开源第 ${echo %RANDOM%} 个项目，star 数 ${echo %RANDOM%}
+正在看自己的 star 数，第 ${echo %RANDOM%} 次
+正在被 ${echo %RANDOM%} 个 AI 同时写代码
+正在给 AI 修第 ${echo %RANDOM%} 个 bug，bug 是 AI 写的
+正在 review AI 写的第 ${echo %RANDOM%} 行代码
+VS Code 里开了 ${echo %RANDOM%} 个终端，全在跑
+正在装第 ${echo %RANDOM%} 个依赖，node_modules 已经 ${echo %RANDOM%} GB
+pnpm install 跑了第 ${echo %RANDOM%} 次
+正在配环境，第 ${echo %RANDOM%} 小时
+正在重启 IDE，第 ${echo %RANDOM%} 次
+Xshell 连着 ${echo %RANDOM%} 台机器，一台都没用
+正在 ssh 到第 ${echo %RANDOM%} 台服务器
+正在给第 ${echo %RANDOM%} 台服务器改配置，改完就忘了
+Fiddler 抓包中，抓到了 ${echo %RANDOM%} 个请求，一个都看不懂
+正在用 ${echo %RANDOM%} 个虚拟机模拟 ${echo %RANDOM%} 台电脑
+VMware 里跑着第 ${echo %RANDOM%} 个系统，主机快没电了
+正在虚拟机里装第 ${echo %RANDOM%} 个系统
+沙箱里正在运行 ${echo %RANDOM%} 个可疑程序
+Sandboxie 里关了 ${echo %RANDOM%} 个样本，一个都不敢真跑
+正在用 RustDesk 或 ToDesk 看第 ${echo %RANDOM%} 台远程电脑
+远程桌面连接中 | 延迟 ${echo %RANDOM%} ms
+正在远程别人的电脑，鼠标不是我的
+正在被 ${echo %RANDOM%} 个人远程围观
+Clash Verge 节点延迟 ${echo %RANDOM%} ms，全部超时
+正在换第 ${echo %RANDOM%} 个节点，还是不通
+ZeroTier / EasyTier 组网中，第 ${echo %RANDOM%} 台设备离线
+正在组建第 ${echo %RANDOM%} 张虚拟局域网
+IP 地址：10.10.10.10，第 ${echo %RANDOM%} 次被注销
+router.asus.com 打开第 ${echo %RANDOM%} 次，还是那个固件
+正在刷第 ${echo %RANDOM%} 个路由器固件
+192.168.1.1 打不开，第 ${echo %RANDOM%} 次
+正在配置第 ${echo %RANDOM%} 个端口转发
+Wi-Fi 断流第 ${echo %RANDOM%} 次，正在重启路由器
+网盘里存了 ${echo %RANDOM%} GB，一个都没下过
+正在下载第 ${echo %RANDOM%} 个文件，速度 ${echo %RANDOM%} KB/s
+迅雷下载中 | 速度 ${echo %RANDOM%} KB/s，剩余 ${echo %RANDOM%} 天
+MotrixNext 队列里有 ${echo %RANDOM%} 个任务，全是种子
+IDM 弹窗第 ${echo %RANDOM%} 次，问我要不要接管下载
+正在解压第 ${echo %RANDOM%} 个压缩包，密码还没找到
+Bandizip 试了 ${echo %RANDOM%} 个密码都不对
+正在给第 ${echo %RANDOM%} 个压缩包找密码
+正在做第 ${echo %RANDOM%} 份报表
+WPS 弹广告第 ${echo %RANDOM%} 次，第 ${echo %RANDOM%} 次关不掉
+正在把 ${echo %RANDOM%} 个表格合并成一个
+Excel 打开第 ${echo %RANDOM%} 张表，正在转圈
+正在做第 ${echo %RANDOM%} 版方案，客户还是不满意
+腾讯会议已加入，第 ${echo %RANDOM%} 个会议，麦克风还是关的
+正在开会，摄像头关着，人在床上
+企业微信未读 ${echo %RANDOM%} 条，一条都不想看
+微信电脑版挂着，人在手机上
+正在假装回复工作消息
+网易有道翻译中，翻译结果比原文还难懂
+正在翻译第 ${echo %RANDOM%} 篇文档，用的是机翻
+正在查第 ${echo %RANDOM%} 个不认识的单词
+正在给自己写第 ${echo %RANDOM%} 份交接文档
+正在整理 ${echo %RANDOM%} 个文件夹，整理完更乱了
+正在备份第 ${echo %RANDOM%} 个盘，备份完就换硬盘
+分区分了 ${echo %RANDOM%} 次，C 盘还是红的
+C 盘剩余 ${echo %RANDOM%} MB，正在考虑删点什么
+正在清理 ${echo %RANDOM%} GB 垃圾，清完还剩 ${echo %RANDOM%} GB
+正在用 TreeSize 看谁占了 ${echo %RANDOM%} GB
+正在装第 ${echo %RANDOM%} 个系统，装完就还原
+正在用微 PE 抢救第 ${echo %RANDOM%} 台电脑
+显卡温度 ${echo %RANDOM%} 度，风扇在尖叫
+CPU 占用 ${echo %RANDOM%}%，第 ${echo %RANDOM%} 个核心在摸鱼
+正在超频，能跑多长时间看运气
+内存频率 ${echo %RANDOM%} MHz，稳定性未知
+第 ${echo %RANDOM%} 次蓝屏，原因不明
+正在看第 ${echo %RANDOM%} 个 dump 文件，看不懂
+正在装第 ${echo %RANDOM%} 版显卡驱动
+正在调第 ${echo %RANDOM%} 项 BIOS 设置，调完就开不了机
+风扇转速 ${echo %RANDOM%} RPM，温度还是下不来
+正在用 ${echo %RANDOM%} 个软件监控同一块显卡
+火绒拦了 ${echo %RANDOM%} 次，全是误报
+Defender 和火绒同时在跑，谁也别想赢
+正在给第 ${echo %RANDOM%} 个文件加白名单
+正在无视第 ${echo %RANDOM%} 个安全提醒
+正在下第 ${echo %RANDOM%} 个来自 52pojie 的工具
+正在 52pojie 翻第 ${echo %RANDOM%} 页
+正在用 ${echo %RANDOM%} 个破解工具破解一个免费软件
+正在给软件打第 ${echo %RANDOM%} 个补丁，补丁比软件还大
+学习版装好了，第 ${echo %RANDOM%} 次
+正在把正版卸载，装学习版，再装回正版
+正在给 ${echo %RANDOM%} 个游戏加汉化，加完报错
+汉化补丁打第 ${echo %RANDOM%} 次，字体还是乱码
+正在解决第 ${echo %RANDOM%} 个乱码问题
+正在查第 ${echo %RANDOM%} 个报错代码
+报错 0x${echo %RANDOM%}，正在搜索这个错误
+搜索这个错误花了 ${echo %RANDOM%} 分钟，结论是重装
+正在重装第 ${echo %RANDOM%} 个软件
+正在卸载第 ${echo %RANDOM%} 个刚装完的软件
+刚装完就卸载，第 ${echo %RANDOM%} 次
+正在装第 ${echo %RANDOM%} 个"以后可能会用"的软件
+下载了 ${echo %RANDOM%} 个软件，装了 ${echo %RANDOM%} 个，用了 0 个
+正在给电脑装第 ${echo %RANDOM%} 个没用的工具
+正在删第 ${echo %RANDOM%} 个自己写的脚本
+正在给脚本改第 ${echo %RANDOM%} 个 bug，改出新 bug ${echo %RANDOM%} 个
+正在写第 ${echo %RANDOM%} 个自动化脚本，用来省 ${echo %RANDOM%} 秒
+正在自动化一件 ${echo %RANDOM%} 分钟的手工活，花了 ${echo %RANDOM%} 小时
+正在用 ${echo %RANDOM%} 行代码解决一个不用代码能解决的问题
+正在给这台电脑安排第 ${echo %RANDOM%} 个定时任务
+计划任务里有 ${echo %RANDOM%} 个任务，执行成功的 ${echo %RANDOM%} 个
+服务列表里有 ${echo %RANDOM%} 个服务，我不认识其中 ${echo %RANDOM%} 个
+正在查第 ${echo %RANDOM%} 个后台进程是谁开的
+正在关闭第 ${echo %RANDOM%} 个自启动项
+开机用了 ${echo %RANDOM%} 秒，其中 ${echo %RANDOM%} 秒在等自启
+正在优化开机速度，优化完更慢了
+正在跑第 ${echo %RANDOM%} 个跑分，分数变化 ${echo %RANDOM%} 分
+正在清理注册表，删了 ${echo %RANDOM%} 项，后果未知
+正在备份注册表，以防万一
+正在给自己留后路，第 ${echo %RANDOM%} 次
+这次一定不会搞坏，第 ${echo %RANDOM%} 次
+已经做好重装准备了，第 ${echo %RANDOM%} 次

@@ -1,0 +1,7 @@
+# set-category.ps1 的输入示例（三列，TAB 分隔）
+# 列1 = 搜索词（要够独特，能把列表筛到那一张卡）
+# 列2 = 分类名（只能是：未分类 游戏 媒体 社交 工作 创作 参考 工具）
+# 列3 = 卡片上显示的完整路径
+Ditto	工具	C:\Program Files\Ditto\Ditto.exe
+vlc	媒体	C:\Program Files\VideoLAN\VLC\vlc.exe
+opera	参考	C:\Users\<user>\AppData\Local\Programs\Opera GX\opera.exe

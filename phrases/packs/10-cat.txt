@@ -1,0 +1,10 @@
+Neko 正在桌面上发呆，已经 ${echo %RANDOM%} 分钟
+Neko 又开始抓屏幕了，第 ${echo %RANDOM%} 次
+猫说这个状态写得不错，奖励 ${echo %RANDOM%} 个金币
+正在和一只猫抢夺桌面控制权
+Neko 的等级是 ${echo %RANDOM%}，我才 1 级
+已经养猫 ${echo %RANDOM%} 天，猫还是不理我
+猫在睡觉，第 ${echo %RANDOM%} 小时
+Neko 跑到了第 ${echo %RANDOM%} 个显示器上
+我要买第 ${echo %RANDOM%} 只猫，金币不够
+宠物模式 wanderer | 正在游荡第 ${echo %RANDOM%} 圈

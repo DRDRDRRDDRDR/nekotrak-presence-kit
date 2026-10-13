@@ -1,0 +1,12 @@
+正在 OBS 里调第 ${echo %RANDOM%} 个场景，直播还没开
+直播中，观众 ${echo %RANDOM%} 人，其中 ${echo %RANDOM%} 个是我自己
+哔哩哔哩直播姬已就绪，第 ${echo %RANDOM%} 天没开播
+正在给直播加第 ${echo %RANDOM%} 层滤镜
+弹幕姬正在念第 ${echo %RANDOM%} 条弹幕，全是自己发的
+DaVinci Resolve 正在渲染，进度 ${echo %RANDOM%}%，卡住不动
+正在剪辑第 ${echo %RANDOM%} 版，还是第一版好看
+剪映进度 ${echo %RANDOM%}%，导出失败第 ${echo %RANDOM%} 次
+正在给视频加第 ${echo %RANDOM%} 个字幕
+Cinema 4D 正在渲染第 ${echo %RANDOM%} 帧，预计 ${echo %RANDOM%} 年后完成
+正在等一个渲染，等了 ${echo %RANDOM%} 小时
+正在用 ${echo %RANDOM%} 个软件编辑同一张图
