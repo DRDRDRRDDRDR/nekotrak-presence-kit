@@ -1,0 +1,11 @@
+# 分类状态格式 · 文言古风
+#
+# 用法：cd tools; .\set-category-format.ps1 -MapFile ..\phrases\category-formats\05-classical.tsv
+
+游戏	正酣战于 {app}，胜负未分，不觉天明
+媒体	{app} 一曲未终，此间已无人听
+社交	{app} 之中，众人皆言，吾独不语
+工作	{app} 之前，伏案佯作勤勉之状
+创作	{app} 已启，苦无妙笔，徒对空屏
+参考	{app} 之中遍寻不得，本已知之
+工具	操 {app} 以修此机，机本无恙

@@ -1,0 +1,11 @@
+# 分类状态格式 · 赛博祭祀 / 机魂
+#
+# 用法：cd tools; .\set-category-format.ps1 -MapFile ..\phrases\category-formats\02-cyber-ritual.tsv
+
+游戏	机魂已接入 {app} · 愿帧率常驻，愿内存不泄
+媒体	音之灵在 {app} 中低语 · 愿解码无损
+社交	信使之魂经 {app} 往来 · 愿此讯必达
+工作	{app} 受命于尘世 · 愿工时早尽
+创作	{app} 张口欲言 · 愿灵感降临于机
+参考	{app} 翻阅万卷 · 愿真知可寻
+工具	{app} 已开此机之膛 · 愿它还能装回去

@@ -1,0 +1,11 @@
+# 分类状态格式 · 系统日志腔
+#
+# 用法：cd tools; .\set-category-format.ps1 -MapFile ..\phrases\category-formats\06-logfile.tsv
+
+游戏	[INFO]  foreground={app}  session=started  exit=never
+媒体	[INFO]  audio_sink={app}  codec=unknown  bitrate=whatever
+社交	[INFO]  im_client={app}  unread=999+  reply=none
+工作	[INFO]  office_app={app}  productivity=0.02  status=pretending
+创作	[WARN]  creative_app={app}  inspiration=null  retry=later
+参考	[INFO]  browser={app}  tabs=too_many  memory=leaking
+工具	[WARN]  system_util={app}  system_was=fine  action=regretted

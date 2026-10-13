@@ -133,9 +133,20 @@ cd tools
 ```powershell
 cd tools
 .\set-category-format.ps1 -Category 游戏 -Format '{app} 已启动 | 这局我很认真'
-.\set-category-format.ps1 -MapFile formats.tsv    # 每行「分类名<TAB>格式串」
-.\set-category-format.ps1 -Read                   # 回显全部 8 个分类的当前格式
+.\set-category-format.ps1 -MapFile ..\phrases\category-formats\03-military.tsv
+.\set-category-format.ps1 -Read                   # 回显各分类当前格式（未分类会报 FAIL，正常）
 ```
+
+`phrases/category-formats/` 里有 6 套现成模板（同样是 `{app}` 的七行表格）：
+
+| 文件 | 风格 |
+|---|---|
+| `00-personal.tsv` | 个人包（本机在用的那套） |
+| `02-cyber-ritual.tsv` | 赛博祭祀 · 机魂 |
+| `03-military.tsv` | 军事战报 |
+| `04-support-ticket.tsv` | 客服工单 |
+| `05-classical.tsv` | 文言古风 |
+| `06-logfile.tsv` | 系统日志 |
 
 **`未分类` 是内置分类，它的编辑对话框只有颜色标签，没有「状态显示格式」字段。** 这是软件行为，不是脚本问题 —— 脚本会如实报 `FAIL`。
 
@@ -218,6 +229,7 @@ nekotrak-presence-kit/
 ├── README.md
 ├── phrases/
 │   ├── packs/                # 19 个风格包，426 条
+│   ├── category-formats/     # 6 套分类状态格式模板（.tsv）
 │   ├── all-300.txt           # 个人包合并版
 │   └── all-genre-126.txt     # 体裁包合并版
 ├── tools/                    # 7 个 PowerShell 脚本

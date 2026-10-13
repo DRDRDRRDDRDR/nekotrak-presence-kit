@@ -1,0 +1,11 @@
+# 分类状态格式 · 客服工单腔
+#
+# 用法：cd tools; .\set-category-format.ps1 -MapFile ..\phrases\category-formats\04-support-ticket.tsv
+
+游戏	工单已受理：{app} 无法退出，用户表示再来一局
+媒体	工单已受理：{app} 音量异常，建议用户摘下耳机
+社交	工单已受理：{app} 消息过多，建议用户装死
+工作	工单已受理：{app} 无法关闭，用户已放弃抵抗
+创作	工单已受理：{app} 灵感未到货，预计下个世纪
+参考	工单已受理：{app} 已打开第 N 个标签页，N 正在增加
+工具	工单已受理：{app} 又把好好的东西改坏了

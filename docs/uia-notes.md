@@ -199,7 +199,6 @@ if ($e.Current.Name -eq '自定义文本预设' -and -not $e.Current.IsOffscreen
 ---
 
 ## 五、踩过的 PowerShell 坑（不是 UIA 的锅，但会一起炸）
-
 ### 中文 .ps1 必须带 UTF-8 BOM
 
 无 BOM 的 UTF-8 中文脚本，PS 5.1 按 GBK 解析，报出来的错完全看不出病因：
@@ -259,3 +258,27 @@ function Echo { ... }     # 被内置别名 Echo (Write-Output) 吞掉，输出�
 ```
 
 改个名（比如 `Snap`）就好。
+
+### `Start-Sleep -Seconds $Delay` 会把毫秒当秒用
+
+写脚本时很容易把手感的「毫秒延迟」参数直接喂给秒版 cmdlet：
+
+```powershell
+param([int]$Delay = 1800)          # 1800 毫秒，人之常情
+...
+Start-Sleep -Seconds $Delay        # 变成睡 1800 秒 = 30 分钟
+```
+
+表现是**脚本看起来彻底卡死**（跑到 600 秒超时都不返回），而逻辑其实完全正确。本项目就踩过：`set-category-format.ps1` 的 `-Read` 模式一次跑 8 个分类，每类睡两次 30 分钟，实际永远跑不完。
+
+**判据**：脚本「卡死」但逐步手工复现能 25 秒跑完 → 先全局搜一遍 `Start-Sleep -Seconds $`。
+
+### 编辑工具会吃掉 UTF-8 BOM
+
+任何编辑工具改写已有 `.ps1` 后，BOM 通常就没了。改完必须补：
+
+```powershell
+$f = 'tools\add-presets.ps1'
+[System.IO.File]::WriteAllText($f, [System.IO.File]::ReadAllText($f, [Text.Encoding]::UTF8), (New-Object System.Text.UTF8Encoding($true)))
+$b = [System.IO.File]::ReadAllBytes($f); "$($b[0]),$($b[1]),$($b[2])"   # 应该是 239,187,191
+```
