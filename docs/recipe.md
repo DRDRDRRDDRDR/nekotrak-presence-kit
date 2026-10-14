@@ -34,14 +34,34 @@ Copy-Item "$src\manifest.json" $dst
 1. 打开 NekoTrak → 设置 → **行为** Tab → 找「丰富状态」分组。
 2. 看「自定义文本项」输入框的 **placeholder 原文**。应该是：
    `添加自定义文本项，可通过 ${...} 语法调用终端命令`
-3. 往里填 `${echo hello}`，看右边「Steam 状态预览」有没有变成 `hello`。
+3. 往里填 `${cmd.exe /c echo hello}`，看右边「Steam 状态预览」有没有变成 `hello`。
 4. 再填 `%RANDOM%`，看它是不是**原样显示** `%RANDOM%`。
 
 第 3、4 步的结果就是你的语法判据：
 
 - `${}` 求值 + `%VAR%` 不求值 ⇒ 用本仓库的写法，继续
-- 两个都求值 ⇒ 这个版本可能换实现（本仓库基于 1.1.6），`tools/` 的写入逻辑照用，短语包的写法要改
+- 两个都求值 ⇒ 这个版本可能换实现，本仓库基于 1.1.6，`tools/` 的写入逻辑照用，短语包的写法要改
 - 两个都不求值 ⇒ 找那个输入框旁边的其他提示，别猜
+
+### 顺手记下 shell 模式
+
+同一页往下找「终端程序」下拉框，或者直接读两级 `config.json` 里的 `steamCommandShell`：
+
+```powershell
+$root = "$env:APPDATA\NekoTrak\config.json"
+$user = Get-ChildItem "$env:APPDATA\NekoTrak\users" -Directory | ForEach-Object {
+  Join-Path $_.FullName 'config.json'
+}
+($root, $user) | ForEach-Object {
+  "$_  ->  " + (Select-String -Path $_ -Pattern '"steamCommandShell"\s*:\s*"([^"]+)"').Matches.Groups[1].Value
+}
+```
+
+**用户级的值会覆盖全局的值。** 两个都记下来，后面写短语要用。
+
+`cmd` 与 `powershell` 两种模式互不兼容，判断依据和跨模式的通用写法都在
+`docs/expression-cheatsheet.md`。**如果你打算把短语发给别人，直接跳到那一页的第七节，
+用里面定案的跨 shell 形态，不要用下面第 3 步给的本地写法。**
 
 ---
 
@@ -88,7 +108,7 @@ python tools\scan-personal-data.py --out personal-profile.md --top 150 --recent 
 
 - **具体** — 指向真实用过的东西，越具体越好笑
 - **自嘲** — 开自己玩笑，不开别人
-- **随机** — 用 `${echo %RANDOM%}` 让数字每次刷新都变
+- **随机** — 用 `${cmd.exe /c echo %RANDOM%}` 让数字每次刷新都变
 - **不泄漏** — 别用 `%COMPUTERNAME%` / `%USERNAME%` / `whoami`，需要指代自己就写死代号
 - **短** — 60 字符以内
 
@@ -106,7 +126,11 @@ for i, line in enumerate(io.open('phrases.txt', encoding='utf-8'), 1):
 print('unbalanced %d' % bad)
 ```
 
-**注意 `%` 结尾**：`${echo %RANDOM%}%` 想输出「数字后跟一个百分号」是合法的，但写成 `${echo %RANDOM%%` 就少了个右括号。这种错最先出现在概率类的短语里。
+**注意 `%` 结尾**：`${cmd.exe /c echo %RANDOM%}%` 想输出「数字后跟一个百分号」是合法的，但写成 `${cmd.exe /c echo %RANDOM%%` 就少了个右括号。这种错最先出现在概率类的短语里。
+
+**跨 shell 形态不要自己拆开校验。** 定案的写法 `${cmd.exe /c echo %RANDOM%}` 里，
+`${` 与 `}` 之间的 `%RANDOM%` 在 cmd 模式下会对，但如果你按「数 `%` 个数必须成对」的规则去查，
+会把它误判成缺一对。上面那段脚本数的是 `${` 与 `}` 的配平，不受影响，照用即可。
 
 ---
 
@@ -280,7 +304,9 @@ $t = Measure-Command { & powershell -NoProfile -NonInteractive -ExecutionPolicy 
 
 **最容易踩的坑**：拿 UI 预览去测命令频率，会测出 15 秒，然后误判成「命令 15 秒才跑一次」。**测「命令多久跑一次」必须让命令自己记账。**
 
-`presenceIntervalMs` / `commandTimeoutMs` 之类的配置项在 exe 里搜不到（22 个候选字段名全部 0 命中）—— 5 秒节拍和 2000 ms 超时都是硬编码，改不了。
+`presenceIntervalMs` / `commandTimeoutMs` 之类的配置项在 exe 里搜不到，22 个候选字段名全部 0 命中 —— 5 秒节拍和 2000 ms 超时都是硬编码，改不了。
+
+**还有一个节拍差要记牢**：`{app}` 这类原生模板约 400 ms 就跟上了，而 `${}` 命令要等 5 秒节拍。两者拼接时会出现「应用名是新的、命令输出是旧的」这种错位。要状态跟得紧就用原生模板，要动态内容才用 `${}`，且别指望它跟得上快速切换。
 
 ---
 
@@ -288,7 +314,10 @@ $t = Measure-Command { & powershell -NoProfile -NonInteractive -ExecutionPolicy 
 
 - [ ] 备份文件在，知道怎么回滚
 - [ ] 语法判据用 UI 亲自验证过（不是抄文档）
+- [ ] 记下了 `steamCommandShell` 的当前取值，用户级优先
+- [ ] 要发给别人时，短语用的是跨 shell 形态 `${cmd.exe /c ...}`，不是本地形态
 - [ ] 短语里没有 `%COMPUTERNAME%` / `%USERNAME%` / `whoami`
+- [ ] 测 `${}` 表达式时是**一条一条单独装**的，不是一次装好几条 —— 多条一起会在 `powershell` 模式下集体撞超时，分不清是形式错还是预算爆
 - [ ] 花括号配对校验通过，`unbalanced 0`
 - [ ] 预设库条数和写入数一致（硬写入的话：写完在界面上数一遍，**确认软件不用重启**）
 - [ ] 硬写入的字符串绑了 `SQLITE_TRANSIENT`（用 `SQLITE_STATIC` 会写进乱码）

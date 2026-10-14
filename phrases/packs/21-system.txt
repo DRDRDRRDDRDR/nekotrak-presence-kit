@@ -1,18 +1,18 @@
-正在整理 ${echo %RANDOM%} 个文件夹，整理完更乱了
-正在备份第 ${echo %RANDOM%} 个盘，备份完就换硬盘
-分区分了 ${echo %RANDOM%} 次，C 盘还是红的
-C 盘剩余 ${echo %RANDOM%} MB，正在考虑删点什么
-正在清理 ${echo %RANDOM%} GB 垃圾，清完还剩 ${echo %RANDOM%} GB
-正在用 TreeSize 看谁占了 ${echo %RANDOM%} GB
-正在装第 ${echo %RANDOM%} 个系统，装完就还原
-正在用微 PE 抢救第 ${echo %RANDOM%} 台电脑
-显卡温度 ${echo %RANDOM%} 度，风扇在尖叫
-CPU 占用 ${echo %RANDOM%}%，第 ${echo %RANDOM%} 个核心在摸鱼
+正在整理 ${cmd.exe /c echo %RANDOM%} 个文件夹，整理完更乱了
+正在备份第 ${cmd.exe /c echo %RANDOM%} 个盘，备份完就换硬盘
+分区分了 ${cmd.exe /c echo %RANDOM%} 次，C 盘还是红的
+C 盘剩余 ${cmd.exe /c echo %RANDOM%} MB，正在考虑删点什么
+正在清理 ${cmd.exe /c echo %RANDOM%} GB 垃圾，清完还剩 ${cmd.exe /c echo %RANDOM%} GB
+正在用 TreeSize 看谁占了 ${cmd.exe /c echo %RANDOM%} GB
+正在装第 ${cmd.exe /c echo %RANDOM%} 个系统，装完就还原
+正在用微 PE 抢救第 ${cmd.exe /c echo %RANDOM%} 台电脑
+显卡温度 ${cmd.exe /c echo %RANDOM%} 度，风扇在尖叫
+CPU 占用 ${cmd.exe /c echo %RANDOM%}%，第 ${cmd.exe /c echo %RANDOM%} 个核心在摸鱼
 正在超频，能跑多长时间看运气
-内存频率 ${echo %RANDOM%} MHz，稳定性未知
-第 ${echo %RANDOM%} 次蓝屏，原因不明
-正在看第 ${echo %RANDOM%} 个 dump 文件，看不懂
-正在装第 ${echo %RANDOM%} 版显卡驱动
-正在调第 ${echo %RANDOM%} 项 BIOS 设置，调完就开不了机
-风扇转速 ${echo %RANDOM%} RPM，温度还是下不来
-正在用 ${echo %RANDOM%} 个软件监控同一块显卡
+内存频率 ${cmd.exe /c echo %RANDOM%} MHz，稳定性未知
+第 ${cmd.exe /c echo %RANDOM%} 次蓝屏，原因不明
+正在看第 ${cmd.exe /c echo %RANDOM%} 个 dump 文件，看不懂
+正在装第 ${cmd.exe /c echo %RANDOM%} 版显卡驱动
+正在调第 ${cmd.exe /c echo %RANDOM%} 项 BIOS 设置，调完就开不了机
+风扇转速 ${cmd.exe /c echo %RANDOM%} RPM，温度还是下不来
+正在用 ${cmd.exe /c echo %RANDOM%} 个软件监控同一块显卡

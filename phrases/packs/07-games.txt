@@ -1,21 +1,21 @@
-逃离塔科夫 | 正在海关蹲 ${echo %RANDOM%} 分钟，然后被一枪
-逃离塔科夫 | 装备没了，${echo %RANDOM%} 个保险也不赔
-艾尔登法环 | 死了 ${echo %RANDOM%} 次，仍然是好游戏
-艾尔登法环 | 正在找 ${echo %RANDOM%} 个赐福点
-黑暗之魂 | 钟还没敲，先死 ${echo %RANDOM%} 次
-PAYDAY 2 | 潜行失败，第 ${echo %RANDOM%} 秒
-PAYDAY 2 | 警笛响了 ${echo %RANDOM%} 次，跟我没关系
-NEO Scavenger | 被 ${echo %RANDOM%} 个流浪汉追着跑
-Brotato | 第 ${echo %RANDOM%} 波，买不起装备
-Slay the Spire 2 | 牌组里全是废牌，共 ${echo %RANDOM%} 张
-DDNet | 挂机第 ${echo %RANDOM%} 名
-潜渊症 | 第 ${echo %RANDOM%} 个船员在船外，没人发现
-正在给第 ${echo %RANDOM%} 个游戏装 mod，装完又不想玩了
-正在 ModWorkshop 翻第 ${echo %RANDOM%} 页
-正在用 ${echo %RANDOM%} 个 mod 修复一个 mod 引发的问题
-为战地 6 排队第 ${echo %RANDOM%} 名
-极限竞速：地平线 6 | 时速 ${echo %RANDOM%} 公里撞树
-GTA 在线 | 正在被 ${echo %RANDOM%} 个人追杀
-正在 MikiGTAOL 盒子里翻 ${echo %RANDOM%} 个功能，一个都不敢开
-正在和 ${echo %RANDOM%} 个人抢同一个战局
-正在被 ${echo %RANDOM%} 个平台同时封号
+逃离塔科夫 | 正在海关蹲 ${cmd.exe /c echo %RANDOM%} 分钟，然后被一枪
+逃离塔科夫 | 装备没了，${cmd.exe /c echo %RANDOM%} 个保险也不赔
+艾尔登法环 | 死了 ${cmd.exe /c echo %RANDOM%} 次，仍然是好游戏
+艾尔登法环 | 正在找 ${cmd.exe /c echo %RANDOM%} 个赐福点
+黑暗之魂 | 钟还没敲，先死 ${cmd.exe /c echo %RANDOM%} 次
+PAYDAY 2 | 潜行失败，第 ${cmd.exe /c echo %RANDOM%} 秒
+PAYDAY 2 | 警笛响了 ${cmd.exe /c echo %RANDOM%} 次，跟我没关系
+NEO Scavenger | 被 ${cmd.exe /c echo %RANDOM%} 个流浪汉追着跑
+Brotato | 第 ${cmd.exe /c echo %RANDOM%} 波，买不起装备
+Slay the Spire 2 | 牌组里全是废牌，共 ${cmd.exe /c echo %RANDOM%} 张
+DDNet | 挂机第 ${cmd.exe /c echo %RANDOM%} 名
+潜渊症 | 第 ${cmd.exe /c echo %RANDOM%} 个船员在船外，没人发现
+正在给第 ${cmd.exe /c echo %RANDOM%} 个游戏装 mod，装完又不想玩了
+正在 ModWorkshop 翻第 ${cmd.exe /c echo %RANDOM%} 页
+正在用 ${cmd.exe /c echo %RANDOM%} 个 mod 修复一个 mod 引发的问题
+为战地 6 排队第 ${cmd.exe /c echo %RANDOM%} 名
+极限竞速：地平线 6 | 时速 ${cmd.exe /c echo %RANDOM%} 公里撞树
+GTA 在线 | 正在被 ${cmd.exe /c echo %RANDOM%} 个人追杀
+正在 MikiGTAOL 盒子里翻 ${cmd.exe /c echo %RANDOM%} 个功能，一个都不敢开
+正在和 ${cmd.exe /c echo %RANDOM%} 个人抢同一个战局
+正在被 ${cmd.exe /c echo %RANDOM%} 个平台同时封号

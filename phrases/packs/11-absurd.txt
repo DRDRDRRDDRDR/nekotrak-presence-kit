@@ -1,10 +1,10 @@
 DRRD 已上线，DRRD 已下线，DRRD 又上线了
-在线状态由 ${echo %RANDOM%} 号线程维护
-正在刷新状态，第 ${echo %RANDOM%} 次
+在线状态由 ${cmd.exe /c echo %RANDOM%} 号线程维护
+正在刷新状态，第 ${cmd.exe /c echo %RANDOM%} 次
 正在看着这个状态发呆
-这个状态是 ${echo %RANDOM%} 秒前生成的，已经过期了
-状态更新中，请稍候 ${echo %RANDOM%} 年
-本条状态包含 ${echo %RANDOM%} 个字符的诚意
-正在用一个 ${echo %RANDOM%} 位随机数证明我活着
+这个状态是 ${cmd.exe /c echo %RANDOM%} 秒前生成的，已经过期了
+状态更新中，请稍候 ${cmd.exe /c echo %RANDOM%} 年
+本条状态包含 ${cmd.exe /c echo %RANDOM%} 个字符的诚意
+正在用一个 ${cmd.exe /c echo %RANDOM%} 位随机数证明我活着
 不要问我状态栏为什么在动，我也不懂
 正在把状态栏当树洞

@@ -1,14 +1,14 @@
-正在做第 ${echo %RANDOM%} 份报表
-WPS 弹广告第 ${echo %RANDOM%} 次，第 ${echo %RANDOM%} 次关不掉
-正在把 ${echo %RANDOM%} 个表格合并成一个
-Excel 打开第 ${echo %RANDOM%} 张表，正在转圈
-正在做第 ${echo %RANDOM%} 版方案，客户还是不满意
-腾讯会议已加入，第 ${echo %RANDOM%} 个会议，麦克风还是关的
+正在做第 ${cmd.exe /c echo %RANDOM%} 份报表
+WPS 弹广告第 ${cmd.exe /c echo %RANDOM%} 次，第 ${cmd.exe /c echo %RANDOM%} 次关不掉
+正在把 ${cmd.exe /c echo %RANDOM%} 个表格合并成一个
+Excel 打开第 ${cmd.exe /c echo %RANDOM%} 张表，正在转圈
+正在做第 ${cmd.exe /c echo %RANDOM%} 版方案，客户还是不满意
+腾讯会议已加入，第 ${cmd.exe /c echo %RANDOM%} 个会议，麦克风还是关的
 正在开会，摄像头关着，人在床上
-企业微信未读 ${echo %RANDOM%} 条，一条都不想看
+企业微信未读 ${cmd.exe /c echo %RANDOM%} 条，一条都不想看
 微信电脑版挂着，人在手机上
 正在假装回复工作消息
 网易有道翻译中，翻译结果比原文还难懂
-正在翻译第 ${echo %RANDOM%} 篇文档，用的是机翻
-正在查第 ${echo %RANDOM%} 个不认识的单词
-正在给自己写第 ${echo %RANDOM%} 份交接文档
+正在翻译第 ${cmd.exe /c echo %RANDOM%} 篇文档，用的是机翻
+正在查第 ${cmd.exe /c echo %RANDOM%} 个不认识的单词
+正在给自己写第 ${cmd.exe /c echo %RANDOM%} 份交接文档

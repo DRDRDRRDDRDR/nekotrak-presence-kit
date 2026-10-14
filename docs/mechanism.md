@@ -96,11 +96,14 @@ P${echo NKEVALOK> %TEMP%\nekoprobe\nkeval.txt}Q
 
 ## 五、执行环境
 
-- **执行器**：设置里的「终端程序」（本机 = `命令提示符（cmd）`）。另可选 PowerShell。
-- **调用形式**：`cmd.exe /e:ON /v:OFF /d /c "<你的${}内容>"`
-- `/v:OFF` ⇒ 延迟展开关闭，`!VAR!` 不可用；但因为在 `${}` 内部，直接写 `%VAR%` 是可以的（实验 3 已证）。
+- **执行器**：设置里的「终端程序」，配置键 `steamCommandShell`，合法取值只有两个 —— `cmd` 与 `powershell`。
+- **cmd 模式的调用形式**：`cmd.exe /e:ON /v:OFF /d /c "<你的${}内容>"`
+- `/v:OFF` ⇒ 延迟展开关闭，`!VAR!` 不可用；但因为在 `${}` 内部，直接写 `%VAR%` 是可以的，实验 3 已证。
+- **powershell 模式的调用形式**：`-NoProfile -NonInteractive -Command`，表达式作为参数元素传入。
 
-cmd 里可用的变量（短语包用到的那几个）：
+**两个模式互不兼容，这是本方案最容易踩的坑。** `cmd` 模式下 `%VAR%` 展开而 PowerShell 表达式静默失败；`powershell` 模式下反过来，`%VAR%` 变成纯文本。想把短语发给别人，就得用 `docs/expression-cheatsheet.md` 第七节的跨 shell 形态。
+
+cmd 里可用的变量，短语包用到的那几个：
 
 | 表达式 | 本机实测值 |
 |---|---|
@@ -119,7 +122,7 @@ ${for /f "tokens=*" %i in ('whoami') do @echo %i 正在上网}
 
 ### `%VAR%` 能用，但不建议用会泄露身份的
 
-`%COMPUTERNAME%` 和 `%USERNAME%` 技术上可用（它们会把真实机器名/账户名送到 Steam 状态栏上，任何好友都能看到）。宁可写死一个代号：
+`%COMPUTERNAME%` 和 `%USERNAME%` 技术上可用，它们会把真实机器名与账户名送到 Steam 状态栏上，任何好友都能看到。宁可写死一个代号：
 
 ```
 这台电脑属于 DRRD，但 DRRD 现在不属于这台电脑
@@ -127,7 +130,7 @@ ${for /f "tokens=*" %i in ('whoami') do @echo %i 正在上网}
 
 ### 命令是固定 5 秒跑一次，不是按需触发
 
-这是 `%VAR%` 方案最大的隐性代价。自记账实测（把值临时设成 `${echo %TIME%>>hit.txt & echo DRRD 正在假装忙}`，150 秒后数行数）：
+这是 `%VAR%` 方案最大的隐性代价。自记账实测 —— 把值临时设成 `${echo %TIME%>>hit.txt & echo DRRD 正在假装忙}`，150 秒后数行数：
 
 ```
 42 次调用，间隔恒为 5.00 s
@@ -146,7 +149,11 @@ ${for /f "tokens=*" %i in ('whoami') do @echo %i 正在上网}
 [STEAM] command execution timed out (2000 ms) [cmd]: powershell -NoProfile ...
 ```
 
-本机用 PowerShell 脚本时累计 46 次（单次 ~1.4 s，贴着上限）。改用 Rust 编译的 exe（单次 11 ms）后告警归零。⇒ **给 `${}` 用的程序必须是毫秒级的，别用冷启动几百毫秒的解释器。**
+方括号里那个标签就是当前 shell 模式，`[cmd]` 或 `[powershell]`。**它是判断配置是否真的生效的最快途径** —— 改了 `steamCommandShell` 之后，只要日志里的标签变了，就证明运行期读到了新值。
+
+本机用 PowerShell 脚本时累计 46 次，单次约 1.4 s，贴着上限。改用 Rust 编译的 exe，单次 11 ms，之后告警归零。⇒ **给 `${}` 用的程序必须是毫秒级的，别用冷启动几百毫秒的解释器。**
+
+这条限制反过来约束了 shell 模式的选择。`powershell` 模式下光是启动解释器就要约 880 ms，原生表达式约 1058 ms，2000 ms 的预算被吃掉近一半。`cmd` 模式下同样一条只要约 62 ms。**如果短语多、机器慢，或者装了会扫描进程启动的杀毒软件，`powershell` 模式很容易丢调用。** 两种模式的开销对照见 `docs/expression-cheatsheet.md` 第七节。
 
 ### 命令模板的其他硬限制（exe 日志串，未文档化）
 

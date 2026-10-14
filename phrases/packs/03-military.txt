@@ -1,26 +1,26 @@
-【战报】DRRD 已进入第 ${echo %RANDOM%} 号阵地
-目标：编译通过。战况：失败 ${echo %RANDOM%} 次
-内存弹药剩余 ${echo %RANDOM%}%，请求补给
-坐标 ${echo %RANDOM%},${echo %RANDOM%}，正在呼叫支援
-【前线】第 ${echo %RANDOM%} 次冲锋，仍未攻下这个 bug
-敌军（报错）数量：${echo %RANDOM%}
-已坚守电脑前 ${echo %RANDOM%} 小时，阵地未失
-【通报】DRRD 部队今日战损：${echo %RANDOM%} 个脑细胞
-正在执行第 ${echo %RANDOM%} 号作战计划：再刷五分钟
-【紧急】风扇阵地告急，温度 ${echo %RANDOM%} 度
-第 ${echo %RANDOM%} 梯队（标签页）已全部投入战场
+【战报】DRRD 已进入第 ${cmd.exe /c echo %RANDOM%} 号阵地
+目标：编译通过。战况：失败 ${cmd.exe /c echo %RANDOM%} 次
+内存弹药剩余 ${cmd.exe /c echo %RANDOM%}%，请求补给
+坐标 ${cmd.exe /c echo %RANDOM%},${cmd.exe /c echo %RANDOM%}，正在呼叫支援
+【前线】第 ${cmd.exe /c echo %RANDOM%} 次冲锋，仍未攻下这个 bug
+敌军（报错）数量：${cmd.exe /c echo %RANDOM%}
+已坚守电脑前 ${cmd.exe /c echo %RANDOM%} 小时，阵地未失
+【通报】DRRD 部队今日战损：${cmd.exe /c echo %RANDOM%} 个脑细胞
+正在执行第 ${cmd.exe /c echo %RANDOM%} 号作战计划：再刷五分钟
+【紧急】风扇阵地告急，温度 ${cmd.exe /c echo %RANDOM%} 度
+第 ${cmd.exe /c echo %RANDOM%} 梯队（标签页）已全部投入战场
 【命令】全员待命，等待编译结果
-正在清点第 ${echo %RANDOM%} 次战利品：一个能跑的版本
-敌情不明，继续潜伏，第 ${echo %RANDOM%} 分钟
-【简报】今日推进 ${echo %RANDOM%} 行代码，撤退 ${echo %RANDOM%} 行
-正在修第 ${echo %RANDOM%} 道防线，防线是 try-catch
-【求援】第 ${echo %RANDOM%} 次弹尽粮绝（没咖啡了）
-任务代号：DRRD-${echo %RANDOM%}
-正在破解第 ${echo %RANDOM%} 号密码，密码是 123456
-【撤退】第 ${echo %RANDOM%} 次战略性关掉 IDE
+正在清点第 ${cmd.exe /c echo %RANDOM%} 次战利品：一个能跑的版本
+敌情不明，继续潜伏，第 ${cmd.exe /c echo %RANDOM%} 分钟
+【简报】今日推进 ${cmd.exe /c echo %RANDOM%} 行代码，撤退 ${cmd.exe /c echo %RANDOM%} 行
+正在修第 ${cmd.exe /c echo %RANDOM%} 道防线，防线是 try-catch
+【求援】第 ${cmd.exe /c echo %RANDOM%} 次弹尽粮绝（没咖啡了）
+任务代号：DRRD-${cmd.exe /c echo %RANDOM%}
+正在破解第 ${cmd.exe /c echo %RANDOM%} 号密码，密码是 123456
+【撤退】第 ${cmd.exe /c echo %RANDOM%} 次战略性关掉 IDE
 防线已破，敌人是困意
-正在勘察第 ${echo %RANDOM%} 块地图（文件夹）
-【胜利】第 ${echo %RANDOM%} 次按时下班（并未发生）
+正在勘察第 ${cmd.exe /c echo %RANDOM%} 块地图（文件夹）
+【胜利】第 ${cmd.exe /c echo %RANDOM%} 次按时下班（并未发生）
 战地记者 DRRD 从前线发回报道
-正在挖第 ${echo %RANDOM%} 条战壕（命令行）
-【终局】本机将于 ${echo %RANDOM%} 秒后关机（并没有）
+正在挖第 ${cmd.exe /c echo %RANDOM%} 条战壕（命令行）
+【终局】本机将于 ${cmd.exe /c echo %RANDOM%} 秒后关机（并没有）

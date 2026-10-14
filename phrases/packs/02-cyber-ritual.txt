@@ -1,26 +1,26 @@
-正在为这台机器举行第 ${echo %RANDOM%} 次开机仪式
+正在为这台机器举行第 ${cmd.exe /c echo %RANDOM%} 次开机仪式
 祭祀进程已启动，供品是电费
-第 ${echo %RANDOM%} 次向风扇祈祷，风扇没有回应
-以 DRRD 之名，唤醒沉睡的 ${echo %RANDOM%} 个进程
+第 ${cmd.exe /c echo %RANDOM%} 次向风扇祈祷，风扇没有回应
+以 DRRD 之名，唤醒沉睡的 ${cmd.exe /c echo %RANDOM%} 个进程
 数据在流，灵魂在等
-正在把第 ${echo %RANDOM%} 个愿望写进注册表
+正在把第 ${cmd.exe /c echo %RANDOM%} 个愿望写进注册表
 香火是电流，神明是 CPU
-正在诵念第 ${echo %RANDOM%} 遍开机自检咒
-机箱里的光在呼吸，第 ${echo %RANDOM%} 次
-正在把回忆备份到第 ${echo %RANDOM%} 块硬盘
-把 ${echo %RANDOM%} 个夜晚供奉给屏幕
-正在超度第 ${echo %RANDOM%} 个崩溃的进程
-此机有灵，灵在 ${echo %RANDOM%} 号核心
-正在与主板进行第 ${echo %RANDOM%} 次心灵沟通
-献祭 ${echo %RANDOM%} GB 内存，换取一次不卡
-正在举行第 ${echo %RANDOM%} 届鼠标点击大典
-固态盘里封存着 ${echo %RANDOM%} 段往事
-正在给风扇上香，第 ${echo %RANDOM%} 炷
-系统时钟指向神谕时刻 ${echo %TIME:~0,5%}
-正在解读第 ${echo %RANDOM%} 条系统日志里的天机
-盘古开天，我开第 ${echo %RANDOM%} 个窗口
-正在用 ${echo %RANDOM%} 行代码与机器对话
-机魂不悦，第 ${echo %RANDOM%} 次蓝屏是它的回信
-正在为第 ${echo %RANDOM%} 块硬盘举行告别仪式
-DRRD 在此，人机合一，第 ${echo %RANDOM%} 层
-正在等待机器显灵，已等 ${echo %RANDOM%} 年
+正在诵念第 ${cmd.exe /c echo %RANDOM%} 遍开机自检咒
+机箱里的光在呼吸，第 ${cmd.exe /c echo %RANDOM%} 次
+正在把回忆备份到第 ${cmd.exe /c echo %RANDOM%} 块硬盘
+把 ${cmd.exe /c echo %RANDOM%} 个夜晚供奉给屏幕
+正在超度第 ${cmd.exe /c echo %RANDOM%} 个崩溃的进程
+此机有灵，灵在 ${cmd.exe /c echo %RANDOM%} 号核心
+正在与主板进行第 ${cmd.exe /c echo %RANDOM%} 次心灵沟通
+献祭 ${cmd.exe /c echo %RANDOM%} GB 内存，换取一次不卡
+正在举行第 ${cmd.exe /c echo %RANDOM%} 届鼠标点击大典
+固态盘里封存着 ${cmd.exe /c echo %RANDOM%} 段往事
+正在给风扇上香，第 ${cmd.exe /c echo %RANDOM%} 炷
+系统时钟指向神谕时刻 ${cmd.exe /c echo %TIME:~0,5%}
+正在解读第 ${cmd.exe /c echo %RANDOM%} 条系统日志里的天机
+盘古开天，我开第 ${cmd.exe /c echo %RANDOM%} 个窗口
+正在用 ${cmd.exe /c echo %RANDOM%} 行代码与机器对话
+机魂不悦，第 ${cmd.exe /c echo %RANDOM%} 次蓝屏是它的回信
+正在为第 ${cmd.exe /c echo %RANDOM%} 块硬盘举行告别仪式
+DRRD 在此，人机合一，第 ${cmd.exe /c echo %RANDOM%} 层
+正在等待机器显灵，已等 ${cmd.exe /c echo %RANDOM%} 年

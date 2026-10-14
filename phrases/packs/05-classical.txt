@@ -1,24 +1,24 @@
 夜半三更，犹坐屏前，不知东方之既白
-此机不可久留，去意已决，第 ${echo %RANDOM%} 回
-心不在焉，魂在 ${echo %RANDOM%} 里
-坐观 ${echo %RANDOM%} 个窗口，皆非所愿
+此机不可久留，去意已决，第 ${cmd.exe /c echo %RANDOM%} 回
+心不在焉，魂在 ${cmd.exe /c echo %RANDOM%} 里
+坐观 ${cmd.exe /c echo %RANDOM%} 个窗口，皆非所愿
 一屏之隔，万念俱灰，复开一屏
-本想早些安寝，奈何 ${echo %RANDOM%} 事未了
+本想早些安寝，奈何 ${cmd.exe /c echo %RANDOM%} 事未了
 窗外月明，屏中代码未明
-此局已残，不如重开，第 ${echo %RANDOM%} 局
-挥 ${echo %RANDOM%} 键如挥剑，斩不尽 bug
+此局已残，不如重开，第 ${cmd.exe /c echo %RANDOM%} 局
+挥 ${cmd.exe /c echo %RANDOM%} 键如挥剑，斩不尽 bug
 人困马乏，风扇尤鸣
-今日之事，明日再说，第 ${echo %RANDOM%} 次明日
+今日之事，明日再说，第 ${cmd.exe /c echo %RANDOM%} 次明日
 一盏孤灯，一台旧机，一个 DRRD
-问君能有几多愁，恰似 ${echo %RANDOM%} 个标签页未关
-程序之道，玄之又玄，第 ${echo %RANDOM%} 章
+问君能有几多愁，恰似 ${cmd.exe /c echo %RANDOM%} 个标签页未关
+程序之道，玄之又玄，第 ${cmd.exe /c echo %RANDOM%} 章
 此身常在屏前老，此心常在屏外游
 夜深忽梦少年事，醒来还在改配置
-不闻窗外事，只听风扇声，第 ${echo %RANDOM%} 更
+不闻窗外事，只听风扇声，第 ${cmd.exe /c echo %RANDOM%} 更
 自古逢秋悲寂寥，我言秋日好摸鱼
 书到用时方恨少，代码到跑时方恨错
-举杯邀明月，低头看手机，第 ${echo %RANDOM%} 次
+举杯邀明月，低头看手机，第 ${cmd.exe /c echo %RANDOM%} 次
 此恨绵绵无绝期，此 bug 绵绵无解期
-长夜漫漫，唯有 ${echo %RANDOM%} 点困意相伴
-不知今夕是何年，只知道是 ${echo %TIME:~0,5%}
+长夜漫漫，唯有 ${cmd.exe /c echo %RANDOM%} 点困意相伴
+不知今夕是何年，只知道是 ${cmd.exe /c echo %TIME:~0,5%}
 万事俱备，只差睡觉

@@ -81,7 +81,7 @@ for p in sorted(glob.glob(os.path.join(KIT, 'phrases', 'packs', '*.txt'))):
     for i, l in enumerate(lines, 1):
         if l.count('${') != l.count('}'):
             unbalanced.append('%s:%d %s' % (base, i, l))
-        if len(l) > 70:
+        if len(l) > 100:
             toolong.append('%s:%d  %d chars' % (base, i, len(l)))
         if l in seen:
             bad('duplicate phrase: "%s" in %s and %s' % (l, seen[l], base))

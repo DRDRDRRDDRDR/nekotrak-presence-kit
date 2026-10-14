@@ -30,11 +30,13 @@
 | `& "powershell.exe" -Command "..."` | 报错 `& was unexpected at this time.` | 正常 |
 | `cmd /c "echo %RANDOM%"` | 26024 | 26024 |
 
+上表最后一行只在「裸表达式」语境成立。真正装进 `${}` 后，程序会给整段再加一层引号，结果就变了，见第七节。
+
 三条结论：
 
 1. `cmd` 模式下 `%VAR%` 会被展开，PowerShell 表达式一律报错。
 2. `powershell` 模式下 PowerShell 表达式可用，但 `%VAR%` 会变成纯文本，不再展开。
-3. `whoami`、`cmd /c` 这类外部命令在两个模式下都能跑，是唯一的公共子集。
+3. `whoami` 这类不依赖 shell 变量的外部命令在两个模式下都能跑，是公共子集。
 
 ## 三、前导 & 不是跨 shell 惯用法
 
@@ -66,13 +68,14 @@ cmd /c "echo A & echo B"     ->  A 换行 B        && 分隔符只在两个命�
 | `%NUMBER_OF_PROCESSORS%` | `$env:NUMBER_OF_PROCESSORS` |
 | `%OS%` | `(Get-CimInstance Win32_OperatingSystem).Caption` |
 
-不想改语义只想换 shell，就把整段包回 cmd：
+不想改语义只想换 shell，请用第七节的可移植写法。下面这种是**错的**：
 
 ```
 ${cmd /c "echo %RANDOM%"}
 ```
 
-这样两个模式下都能跑，代价是每次多起一个 cmd 进程。
+裸表达式语境下它两个模式都能跑，但装进 `${}` 之后程序会给整段再加一层引号，
+cmd 模式下会多吐一个游离的双引号出来。第七节有实测。
 
 ## 五、社区速查表 maozi.io
 
@@ -119,20 +122,82 @@ $stdout.Write($bytes, 0, $bytes.Length)
 
 ## 六、本机当前状态
 
-截至 2026-10-14，这台机器的全局与用户级 `config.json` 都是 `steamCommandShell: "cmd"`。
+截至 2026-10-14，这台机器的全局与用户级 `config.json` 都是 `steamCommandShell: "powershell"`。
+早先两个都是 `cmd`，为了用 maozi 那套速查表切了过来，切换过程见第七节。
 
-已有的 350 条短语里只用到两个命令替换表达式：
-
-```
-${echo %RANDOM%}       出现 325 次
-${echo %TIME:~0,5%}    出现 4 次
-```
-
-也就是说，如果要把 Shell 换成 `powershell` 去用 maozi 的速查表，迁移量是两条：
+数据库里的 350 条短语已经全部改成第七节的跨 shell 形态，不再依赖当前 shell 取值：
 
 ```
-${echo %RANDOM%}      ->  ${Get-Random -Max 32768}
-${echo %TIME:~0,5%}   ->  ${(Get-Date).ToString('HH:mm')}
+${cmd.exe /c echo %RANDOM%}        301 行
+${cmd.exe /c echo %TIME:~0,5%}     4 行
 ```
 
-改完稳妥起见重启一次主程序。`steamCommandShell` 是启动期读取还是每次执行时读取，本机没有实测，不要赌。
+改完重启了一次主程序。`steamCommandShell` 在**运行期生效** —— 切换后日志里的 shell 标签当场从 `[cmd]` 变成 `[powershell]`，不必重启，但重启一次没有坏处。
+
+**单条受控复测，2026-10-14 23:32**：把 `steamSyncItems` 换成唯一一条
+`Q1~${cmd.exe /c echo %RANDOM% %TIME:~0,5%>> hits.txt}~Q1`，130 秒后标记文件累计 26 行，
+间隔正是 5.00 秒节拍，值每次都变，且这段时间内 `timed out` 增量为 0。
+⇒ 跨 shell 形态既被执行，也没被 2000 毫秒超时丢掉。
+
+> 早期测出的「跨 shell 形态会被超时丢掉」是并发假象。当时把多个候选同时塞进 `steamSyncItems`，
+> 每个候选各起一个 shell 进程，预算互相挤爆。**判定任何 `${}` 写法都必须一次只装一条。**
+
+## 七、跨 shell 的可移植写法
+
+套件要发给别人，而别人的 `steamCommandShell` 可能是 `cmd` 也可能是 `powershell`。
+能不能找到一种两个模式下都成立的写法？可以，但**只有一种**，而且它跟裸表达式的结论完全相反。
+
+这一节全部是单条对照实测。**必须一条一条单独测** —— 把多个候选同时塞进 `steamSyncItems`，
+在 `powershell` 模式下会一起撞上 2000 毫秒硬超时而集体报错，分不清是形式不对还是预算被挤爆。
+
+### 候选与结果
+
+装进「自定义文本项」，以 `~` 包夹便于辨认，重启后在预览里读：
+
+| 候选 | 写法 | `cmd` 模式 | `powershell` 模式 |
+| --- | --- | --- | --- |
+| 裸变量 | `${echo %RANDOM%}` | 干净求值 | 原样输出文本 |
+| 短包装 | `${cmd /c echo %RANDOM%}` | **漏一个游离双引号** | 干净求值 |
+| 加引号包装 | `${cmd /c "echo %RANDOM%"}` | 不执行 | 干净求值 |
+| 全路径包装 | `${C:\Windows\System32\cmd.exe /c echo %RANDOM%}` | 干净求值 | 干净求值 |
+| PATH 包装 | `${cmd.exe /c echo %RANDOM%}` | 干净求值 | 干净求值 |
+| 环境变量包装 | `${%ComSpec% /c echo %RANDOM%}` | 干净求值 | **不执行** |
+| 原生 PowerShell | `${$(Get-Random -Max 32768)}` | 不执行 | 干净求值 |
+
+### 为什么短包装会漏引号
+
+`cmd` 模式下程序拼出的命令行大致是：
+
+```
+cmd.exe /e:ON /v:OFF /d /c "cmd /c echo %RANDOM%"
+```
+
+外层 `cmd` 剥掉引号后交给内层，内层解析时把行尾当成了未闭合的引号，于是输出里带出一个 `"`。
+换成 `cmd.exe` 全名或带路径时，外层的解析路径不同，反而干净。
+
+`%ComSpec%` 那条死因不同：`powershell` 模式下 `%ComSpec%` 不会被展开，
+整段变成字面文本交给 PowerShell，于是什么都没发生。
+
+### 定案
+
+**跨 shell 可移植形态 = `${cmd.exe /c echo %RANDOM%}` 与 `${cmd.exe /c echo %TIME:~0,5%}`。**
+
+用全路径 `${C:\Windows\System32\cmd.exe /c ...}` 同样成立，但字符数约是前者的 1.4 倍，
+而 Steam 状态栏有长度上限，长短语会顶到边。除非系统装在非 `C:\Windows`，否则用短的那个。
+
+代价与性能，各 5 次平均，含进程冷启动：
+
+| 形态 | `cmd` 模式 | `powershell` 模式 |
+| --- | --- | --- |
+| `${cmd.exe /c echo %RANDOM%}` | 约 62 ms | 约 876 ms |
+| `${$(Get-Random -Max 32768)}` | 不执行 | 约 1058 ms |
+
+可移植形态**不但没有代价，反而更快**，因为 `powershell` 模式下它起的进程比原生表达式更轻。
+2000 毫秒硬超时下 876 ms 是安全的，但余量并不宽裕：机器变慢或有杀毒软件扫描进程启动时会被吃掉。
+若你确定自己的模式且追求极限，原生形态更快；要发给别人，就用可移植形态。
+
+### 反过来不成立
+
+**不要**指望「把表达式包进 `cmd /c` 就一定可移植」。第三节那个 `cmd /c "echo %RANDOM%"`
+的表格是裸表达式语境的结论，装进 `${}` 后引号层级会变。只有上面定案的两种形态经过实测。
+

@@ -15,8 +15,9 @@
     其他 {xxx} 一律原样输出，不报错。所以别写 {song}/{time} 这类幻觉变量。
 
   ★ 与 ${...} 混用
-    可以。`{app} 正在玩 | 第 ${echo %RANDOM%} 次` 会先替换 {app}，
+    可以。`{app} 正在玩 | 第 ${cmd.exe /c echo %RANDOM%} 次` 会先替换 {app}，
     再走 5 秒节拍执行命令段。追求「跟得上切换」就别放 ${...}。
+    命令段用跨 shell 形态 `${cmd.exe /c ...}`，理由见 docs/expression-cheatsheet.md 第七节。
 
   用法：
     .\set-category-format.ps1 -Category 游戏 -Format '{app} 已启动 | 这局我很认真'

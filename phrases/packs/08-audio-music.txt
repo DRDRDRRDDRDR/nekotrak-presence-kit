@@ -1,17 +1,17 @@
-Voicemeeter | 第 ${echo %RANDOM%} 条虚拟线，声音去哪了我不知道
-刚把 ASIO Link Pro 装好，第 ${echo %RANDOM%} 次
-Equalizer APO 里正在跑 ${echo %RANDOM%} 条滤波器
-正在用 ${echo %RANDOM%} 种变声器尝试变成别人
-Soundpad 里存了 ${echo %RANDOM%} 个音效，全是噪音
-疯歌音效平台 | 正在播放第 ${echo %RANDOM%} 个诡异音效
-FL Studio | 工程里 ${echo %RANDOM%} 个轨道，全空
-Studio One 开着第 ${echo %RANDOM%} 个工程
-修音修到第 ${echo %RANDOM%} 遍，原唱已经不认识自己了
-Kontakt 里加载了 ${echo %RANDOM%} GB 音色，一个音没弹
-正在为第 ${echo %RANDOM%} 个小节加混响
-正在给 ${echo %RANDOM%} 个 VST 插件分配内存
-Serato DJ Pro | 正在搓第 ${echo %RANDOM%} 张碟
-Cider 正在播放第 ${echo %RANDOM%} 首歌，没人听
-网易云音乐 | 正在听第 ${echo %RANDOM%} 首，全是日推
-Spotify 会员过期第 ${echo %RANDOM%} 天
-正在下载第 ${echo %RANDOM%} 首歌，下完就换平台
+Voicemeeter | 第 ${cmd.exe /c echo %RANDOM%} 条虚拟线，声音去哪了我不知道
+刚把 ASIO Link Pro 装好，第 ${cmd.exe /c echo %RANDOM%} 次
+Equalizer APO 里正在跑 ${cmd.exe /c echo %RANDOM%} 条滤波器
+正在用 ${cmd.exe /c echo %RANDOM%} 种变声器尝试变成别人
+Soundpad 里存了 ${cmd.exe /c echo %RANDOM%} 个音效，全是噪音
+疯歌音效平台 | 正在播放第 ${cmd.exe /c echo %RANDOM%} 个诡异音效
+FL Studio | 工程里 ${cmd.exe /c echo %RANDOM%} 个轨道，全空
+Studio One 开着第 ${cmd.exe /c echo %RANDOM%} 个工程
+修音修到第 ${cmd.exe /c echo %RANDOM%} 遍，原唱已经不认识自己了
+Kontakt 里加载了 ${cmd.exe /c echo %RANDOM%} GB 音色，一个音没弹
+正在为第 ${cmd.exe /c echo %RANDOM%} 个小节加混响
+正在给 ${cmd.exe /c echo %RANDOM%} 个 VST 插件分配内存
+Serato DJ Pro | 正在搓第 ${cmd.exe /c echo %RANDOM%} 张碟
+Cider 正在播放第 ${cmd.exe /c echo %RANDOM%} 首歌，没人听
+网易云音乐 | 正在听第 ${cmd.exe /c echo %RANDOM%} 首，全是日推
+Spotify 会员过期第 ${cmd.exe /c echo %RANDOM%} 天
+正在下载第 ${cmd.exe /c echo %RANDOM%} 首歌，下完就换平台

@@ -1,27 +1,27 @@
 DRRD 已上线，但 DRRD 本人还没到
 DRRD 不是用户名，是一种生活方式
 别找了，DRRD 就在这里
-DRRD 正在用 ${echo %RANDOM%} 个身份同时在线
+DRRD 正在用 ${cmd.exe /c echo %RANDOM%} 个身份同时在线
 DRRD 的两台显示器都不同意对方
 DRRD 正在假装自己只有一个显示器
-以 DRRD 之名，把 ${echo %RANDOM%} 个窗口全部打开
+以 DRRD 之名，把 ${cmd.exe /c echo %RANDOM%} 个窗口全部打开
 DRRD 在这儿，但 DRRD 不知道自己在这儿
 正在以 DRRD 的身份做一些不方便细说的事
 DRRD 没有在摸鱼，DRRD 在等编译
-DRRD 今天的 GitHub 提交数是 ${echo %RANDOM%}，其中 ${echo %RANDOM%} 个是 README
-正在搬砖，第 ${echo %RANDOM%} 块
+DRRD 今天的 GitHub 提交数是 ${cmd.exe /c echo %RANDOM%}，其中 ${cmd.exe /c echo %RANDOM%} 个是 README
+正在搬砖，第 ${cmd.exe /c echo %RANDOM%} 块
 DRRD 正在复习三个月前自己写的代码，并且不认识它
 DRRD 正在给 AI 写提示词，AI 正在给 DRRD 写代码
-DRRD 的键盘今天已经按了 ${echo %RANDOM%} 次，其中一半是 Ctrl+Z
-hotmail 找回失败，第 ${echo %RANDOM%} 天
+DRRD 的键盘今天已经按了 ${cmd.exe /c echo %RANDOM%} 次，其中一半是 Ctrl+Z
+hotmail 找回失败，第 ${cmd.exe /c echo %RANDOM%} 天
 d 多少 myr 等于 5 人民币，这个问题我还在想
 who am i，其实我也不太确定
 正在搜索：网页搜索 api（用来搜索网页搜索 api）
-一分机场 ${echo %RANDOM%} 号节点，纯净 IP 认证中
-纯净 IP 认证失败，第 ${echo %RANDOM%} 次
-google 工单已提交，回信时间 ${echo %RANDOM%} 年后
-正在找免费的 codex 额度，第 ${echo %RANDOM%} 个号
-正在薅 ${echo %RANDOM%} 家 API 的免费额度
-正在看 API 计费页面，心跳每分钟 ${echo %RANDOM%} 次
-正在给 ${echo %RANDOM%} 个 AI 工具分配余额
-一分钱没花，token 用了 ${echo %RANDOM%} 万
+一分机场 ${cmd.exe /c echo %RANDOM%} 号节点，纯净 IP 认证中
+纯净 IP 认证失败，第 ${cmd.exe /c echo %RANDOM%} 次
+google 工单已提交，回信时间 ${cmd.exe /c echo %RANDOM%} 年后
+正在找免费的 codex 额度，第 ${cmd.exe /c echo %RANDOM%} 个号
+正在薅 ${cmd.exe /c echo %RANDOM%} 家 API 的免费额度
+正在看 API 计费页面，心跳每分钟 ${cmd.exe /c echo %RANDOM%} 次
+正在给 ${cmd.exe /c echo %RANDOM%} 个 AI 工具分配余额
+一分钱没花，token 用了 ${cmd.exe /c echo %RANDOM%} 万

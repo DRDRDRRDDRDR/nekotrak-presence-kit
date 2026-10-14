@@ -6,7 +6,7 @@
 
 1. **`PROMPT.md`** —— 一份可以直接丢给 AI Agent 的提示词。它会带着 AI 从零摸清 NekoTrak 的状态文本机制、把你的浏览器历史和应用清单读出来、生成只属于你的搞怪短语、再通过 Windows UI Automation 或者直接写数据库，把它们灌进软件里。
 2. **`phrases/`** —— 476 条现成的中文搞怪短语，按 20 个风格包分好，外加 6 套分类状态格式模板。可以一条一条挑，也可以整包灌。
-3. **`tools/`** —— 9 个工具：7 个 PowerShell 脚本走界面，2 个 Python 工具分别做硬写入与个人数据扫描。批量灌短语、扫描导入本机应用、批量改分类、按分类设状态模板、按前台程序吐词、读出这台机器真实的你。
+3. **`tools/`** —— 12 个工具：7 个 PowerShell 脚本走界面，4 个 Python 工具分别做硬写入、个人数据扫描、仓库自检、shell 模式迁移，外加 1 个示例 TSV。批量灌短语、扫描导入本机应用、批量改分类、按分类设状态模板、按前台程序吐词、读出这台机器真实的你。
 
 ---
 
@@ -16,27 +16,30 @@ NekoTrak 的「自定义文本」有个命令替换语法 —— 输入框的 pl
 
 > 添加自定义文本项，可通过 `${...}` 语法调用终端命令
 
-**只有 `${...}` 里的东西会被执行**（交给「终端程序」设置项，本机默认是 `cmd`），stdout 会被内联进最终状态。花括号外面的内容原样输出。
+**只有 `${...}` 里的东西会被执行** —— 交给「终端程序」设置项，取值可能是 `cmd` 也可能是 `powershell` —— stdout 会被内联进最终状态。花括号外面的内容原样输出。
 
 实测（把值写进去，读「Steam 状态预览」）：
 
 | 写入 | 预览显示 | 结论 |
 |---|---|---|
-| `${echo hi}` | `hi` | 执行了 |
+| `${cmd.exe /c echo hi}` | `hi` | 执行了 |
 | `%RANDOM%` | `%RANDOM%` | **没执行**，原样吐出 |
 | `R%RANDOM%S ${echo T1}${echo T2}` | `R%RANDOM%S T1T2` | 裸变量死，`${}` 活，且可相邻拼接 |
 
 所以网上那些教你写 `%RANDOM%` 的 NekoTrak 教程是错的。正确的写法是：
 
 ```
-正在找回 hotmail，第 ${echo %RANDOM%} 次
+正在找回 hotmail，第 ${cmd.exe /c echo %RANDOM%} 次
 ```
 
-`${}` 里跑的是 cmd，所以 cmd 那套变量能直接用：`%RANDOM%`、`%TIME%`、`%TIME:~0,5%`、`%DATE%`。
+这段绕了一层 `cmd.exe /c`，是为了让短语不管你的 `steamCommandShell` 设成 `cmd` 还是
+`powershell` 都能跑。为什么不直接写 `${echo %RANDOM%}`、以及另外几种常见写法为什么不行，
+见 `docs/expression-cheatsheet.md` 第七节，那里有七种候选在两种模式下的完整对照表。
 
-（`%COMPUTERNAME%` 和 `%USERNAME%` 也能用，但它们会把你的机器名和账户名广播到 Steam 状态栏上。这套短语包刻意不用它们 —— 需要露面就写死一个代号。）
+`%COMPUTERNAME%` 和 `%USERNAME%` 同样能用，但它们会把你的机器名和账户名广播到 Steam 状态栏上。
+这套短语包刻意不用它们 —— 需要露面就写死一个代号。
 
-**副作用警告**：`${}` 里是真正的命令行执行，不是沙箱。`${echo hi > C:\x.txt}` 是真会写文件的。别把来路不明的字符串贴进去。
+**副作用警告**：`${}` 里是真正的命令行执行，不是沙箱。`${cmd.exe /c echo hi > C:\x.txt}` 是真会写文件的。别把来路不明的字符串贴进去。
 
 **预设存在哪**：不在 `config.json`，在一个 SQLCipher 加密的 SQLite 库里（表 `custom_text_presets`），密钥由 SteamID 派生。**常规脚本写不进去，但密钥会以明文躺在 NekoTrak 进程内存里** —— `tools/nk-hardwrite.py key` 能从内存里把它抠出来，然后直连数据库读写（300 条约 0.13 秒）。界面通道（`tools/*.ps1`）仍然保留，因为它是唯一不碰内存的办法。
 
@@ -239,6 +242,8 @@ x'9b53c55d…<64 位十六进制密钥>… 8bff5504cd9a5a97ebd837a6ec8486b5'
 | `fg-phrase.ps1` | 按前台程序吐词（给 `${}` 调用的） |
 | `nk-hardwrite.py` | **硬写入**：直连加密数据库读写预设、分类格式、应用级短语、网站标题规则，不走界面。300 条约 0.13 秒 |
 | `scan-personal-data.py` | 扫描这台机器真实的你：浏览器历史、搜索词、访问时段、已装软件、Steam 游戏，输出一份 Markdown 画像 |
+| `migrate-shell.py` | 把预设库里的表达式在 `cmd` 与 `powershell` 两种写法之间整体迁移，改 shell 模式时用。默认只预演，加 `--apply` 才写 |
+| `selfcheck-kit.py` | 发布前自检：BOM、UTF-8、条数、去重、花括号配平、合并文件一致性、禁用标识符、文档断言 |
 
 **全部要求 PowerShell 5.1+，全部存成 UTF-8 with BOM。** 这不是洁癖 —— 无 BOM 的 UTF-8 中文 .ps1 会被 PS 5.1 按 GBK 解析，报一堆莫名其妙的 `Missing closing ')'`。改完脚本记得补回 BOM：
 
@@ -284,7 +289,7 @@ nekotrak-presence-kit/
 │   ├── category-formats/     # 6 套分类状态格式模板（.tsv）
 │   ├── all-personal-350.txt  # 个人包合并版
 │   └── all-genre-126.txt     # 体裁包合并版
-├── tools/                    # 7 个 PowerShell 脚本 + 2 个 Python 工具
+├── tools/                    # 7 个 PowerShell 脚本 + 4 个 Python 工具
 └── docs/
     ├── mechanism.md          # 机制取证全过程：怎么证明 ${} 才执行
     ├── uia-notes.md          # UIA 通道细节与全部踩坑

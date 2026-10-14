@@ -1,24 +1,24 @@
-工单 #${echo %RANDOM%} 已受理：用户表示电脑很慢
-您的摸鱼请求正在排队，前面还有 ${echo %RANDOM%} 人
-该问题已升级至二级支持，预计 ${echo %RANDOM%} 个工作日
+工单 #${cmd.exe /c echo %RANDOM%} 已受理：用户表示电脑很慢
+您的摸鱼请求正在排队，前面还有 ${cmd.exe /c echo %RANDOM%} 人
+该问题已升级至二级支持，预计 ${cmd.exe /c echo %RANDOM%} 个工作日
 感谢您的来电，本次通话已录音（并没有）
-工单 #${echo %RANDOM%} 已关闭，原因是「重启试试」
-您的密码重置请求已提交，请查收第 ${echo %RANDOM%} 封邮件
+工单 #${cmd.exe /c echo %RANDOM%} 已关闭，原因是「重启试试」
+您的密码重置请求已提交，请查收第 ${cmd.exe /c echo %RANDOM%} 封邮件
 客服 DRRD 正在为您服务，请勿挂断
-已为您转接人工，人工正在摸鱼，第 ${echo %RANDOM%} 次
-工单 #${echo %RANDOM%}：用户反馈风扇声音大，建议忍着
+已为您转接人工，人工正在摸鱼，第 ${cmd.exe /c echo %RANDOM%} 次
+工单 #${cmd.exe /c echo %RANDOM%}：用户反馈风扇声音大，建议忍着
 您的意见对我们非常重要，但我们不会改
-正在为您查询第 ${echo %RANDOM%} 号知识库条目
+正在为您查询第 ${cmd.exe /c echo %RANDOM%} 号知识库条目
 该功能是设计如此，不是 bug，工单已关闭
-请对本次服务打分，1 到 ${echo %RANDOM%} 分
-已记录您的问题，工单号 #${echo %RANDOM%}
+请对本次服务打分，1 到 ${cmd.exe /c echo %RANDOM%} 分
+已记录您的问题，工单号 #${cmd.exe /c echo %RANDOM%}
 您的请求超出了本次会话范围，请重新排队
-正在为您转接第 ${echo %RANDOM%} 个部门
-客服繁忙，当前排队 ${echo %RANDOM%} 位，请耐心等待
-工单 #${echo %RANDOM%} 处理中，处理人是实习生
+正在为您转接第 ${cmd.exe /c echo %RANDOM%} 个部门
+客服繁忙，当前排队 ${cmd.exe /c echo %RANDOM%} 位，请耐心等待
+工单 #${cmd.exe /c echo %RANDOM%} 处理中，处理人是实习生
 已为您升级到最新版本，问题更多了
 感谢您的耐心，您的耐心已用完
-正在为您核对第 ${echo %RANDOM%} 项账单明细
+正在为您核对第 ${cmd.exe /c echo %RANDOM%} 项账单明细
 您的账号存在异常，异常是您本人
-工单 #${echo %RANDOM%} 已转交，转交对象还是我
-本次服务已结束，欢迎第 ${echo %RANDOM%} 次光临
+工单 #${cmd.exe /c echo %RANDOM%} 已转交，转交对象还是我
+本次服务已结束，欢迎第 ${cmd.exe /c echo %RANDOM%} 次光临
