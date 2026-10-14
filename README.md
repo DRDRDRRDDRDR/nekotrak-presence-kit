@@ -288,10 +288,9 @@ nekotrak-presence-kit/
 └── docs/
     ├── mechanism.md          # 机制取证全过程：怎么证明 ${} 才执行
     ├── uia-notes.md          # UIA 通道细节与全部踩坑
+    ├── expression-cheatsheet.md # Shell 模式 cmd / powershell 的差异与迁移对照
     └── recipe.md             # 从零复刻一遍的完整操作序列
 ```
-
----
 
 ---
 
@@ -343,11 +342,16 @@ python tools/nk-hardwrite.py title-filters phrases/title-filters/00-personal.tsv
 （清空前的模板留档在 `phrases/category-formats/00-personal.tsv`）。
 应用没有自己的短语时才回落到标题路径 —— 浏览器靠的就是这一层。
 
-### 4. 两个必须知道的
+### 4. 三个必须知道的
 
 - 应用级短语和标题规则都是**启动时加载**的，改完要重启 NekoTrak。
 - 验证时**别看软件里的「Steam 状态预览」**：那个面板约 15 秒才重绘一次，
   会把 400 毫秒的更新看成 15 秒。要真数据就查数据库 `sessions.title`。
+- **`${}` 交给哪个 shell 是配置项 `steamCommandShell` 决定的，取值只有 `cmd` 与 `powershell`。**
+  两种模式互不兼容：`cmd` 模式下 `%VAR%` 展开而 PowerShell 表达式静默失败，
+  `powershell` 模式下反过来，`%VAR%` 会变成纯文本。
+  社区速查表多半按 PowerShell 写，先确认自己的模式再复制。详见
+  `docs/expression-cheatsheet.md`。
 
 ---
 

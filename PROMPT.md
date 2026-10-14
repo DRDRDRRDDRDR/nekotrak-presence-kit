@@ -22,6 +22,7 @@
    ```
 5. **写文件的活别用 PowerShell 的 `Set-Content`**。PS 5.1 按 ANSI 读写 UTF-8，中文字节会被吞掉换行。用 Python（严格 UTF-8）或 .NET 的 `[System.IO.File]::WriteAllText`。
 6. **别用 PowerShell 的 heredoc**（`python - <<'PY' ... PY` 这种）。PS 5.1 不支持，语法直接报错。一律写成 `.py` 文件再 `python 文件.py`。
+7. **`${}` 交给哪个 shell 由配置项 `steamCommandShell` 决定，取值只有 `cmd` 和 `powershell`，两种模式互不兼容**。`cmd` 下 `%RANDOM%` 会展开而 PowerShell 表达式静默失败；`powershell` 下反过来，`%VAR%` 会变成纯文本。前导 `&` 在 `cmd` 下报 `& was unexpected at this time.`，所以它不是跨 shell 惯用法。动手写表达式之前先读 `config.json` 里的这个键，理由与迁移对照表见 `docs/expression-cheatsheet.md`。
 
 ---
 
