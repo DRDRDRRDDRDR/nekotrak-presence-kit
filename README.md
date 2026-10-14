@@ -5,7 +5,7 @@
 三样东西：
 
 1. **`PROMPT.md`** —— 一份可以直接丢给 AI Agent 的提示词。它会带着 AI 从零摸清 NekoTrak 的状态文本机制、把你的浏览器历史和应用清单读出来、生成只属于你的搞怪短语、再通过 Windows UI Automation 或者直接写数据库，把它们灌进软件里。
-2. **`phrases/`** —— 426 条现成的中文搞怪短语，按 19 个风格包分好，外加 6 套分类状态格式模板。可以一条一条挑，也可以整包灌。
+2. **`phrases/`** —— 476 条现成的中文搞怪短语，按 20 个风格包分好，外加 6 套分类状态格式模板。可以一条一条挑，也可以整包灌。
 3. **`tools/`** —— 9 个工具：7 个 PowerShell 脚本走界面，2 个 Python 工具分别做硬写入与个人数据扫描。批量灌短语、扫描导入本机应用、批量改分类、按分类设状态模板、按前台程序吐词、读出这台机器真实的你。
 
 ---
@@ -46,7 +46,7 @@ NekoTrak 的「自定义文本」有个命令替换语法 —— 输入框的 pl
 
 ### 零、现写的那一套，和现成短语不是一回事
 
-`phrases/` 里的 426 条是**别人的**笑话 —— 准确说是我自己机器上的笑话，你拿去能笑的不多。真正好笑的那批只能现写，方法是先让机器把「你真实干过什么」摊开，再让 AI 照着摊开的东西写。
+`phrases/` 里的 476 条是**别人的**笑话 —— 准确说是我自己机器上的笑话，你拿去能笑的不多。真正好笑的那批只能现写，方法是先让机器把「你真实干过什么」摊开，再让 AI 照着摊开的东西写。
 
 ```powershell
 python tools\scan-personal-data.py --out personal-profile.md --top 150 --recent 300
@@ -64,9 +64,9 @@ python tools\scan-personal-data.py --out personal-profile.md --top 150 --recent 
 
 ### 一、直接拿现成短语
 
-`phrases/packs/` 下 19 个文件，共 **426 条**，分成两组：
+`phrases/packs/` 下 20 个文件，共 **476 条**，分成两组：
 
-**A 组 · 个人包（300 条）** —— 从真实浏览历史和软件清单里长出来的，带具体名字、具体数字。分成 14 个：
+**A 组 · 个人包（350 条）** —— 从真实浏览历史和软件清单里长出来的，带具体名字、具体数字。分成 15 个：
 
 | 文件 | 条数 | 内容 |
 |---|---|---|
@@ -84,6 +84,7 @@ python tools\scan-personal-data.py --out personal-profile.md --top 150 --recent 
 | `20-office.txt` | 14 | 办公 / 会议 / 翻译 |
 | `21-system.txt` | 18 | 备份分区 / 硬件 / 显卡 / 蓝屏 |
 | `22-security.txt` | 40 | 安全 / 破解汉化 / 报错重装 / 自动化 / 注册表 |
+| `23-fresh.txt` | 50 | **现写的那一批**：2026-10-14 按个人数据画像现场生成，见「用法零」 |
 
 **B 组 · 体裁包（126 条）** —— 不限个人经历，纯玩文体，谁都能用：
 
@@ -95,7 +96,7 @@ python tools\scan-personal-data.py --out personal-profile.md --top 150 --recent 
 | `05-classical.txt` | 24 | 文言古风：夜半三更、问君能有几多愁 |
 | `06-logfile.txt` | 26 | 系统日志腔：INFO/WARN/FATAL、异常堆栈 |
 
-两个合并文件：`phrases/all-300.txt`、`phrases/all-genre-126.txt`。
+两个合并文件：`phrases/all-personal-350.txt`、`phrases/all-genre-126.txt`。
 
 **个人包更好笑，但只对我好笑。** 体裁包你拿去就能用。
 
@@ -279,9 +280,9 @@ nekotrak-presence-kit/
 ├── PROMPT.md                 # 丢给 AI 的提示词
 ├── README.md
 ├── phrases/
-│   ├── packs/                # 19 个风格包，426 条
+│   ├── packs/                # 20 个风格包，476 条
 │   ├── category-formats/     # 6 套分类状态格式模板（.tsv）
-│   ├── all-300.txt           # 个人包合并版
+│   ├── all-personal-350.txt  # 个人包合并版
 │   └── all-genre-126.txt     # 体裁包合并版
 ├── tools/                    # 7 个 PowerShell 脚本 + 2 个 Python 工具
 └── docs/
