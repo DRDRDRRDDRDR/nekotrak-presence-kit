@@ -45,48 +45,40 @@ Copy-Item "$src\manifest.json" $dst
 
 ---
 
-## 第 2 步：读搜索历史（写短语的素材）
+## 第 2 步：读我的机器，拿到写短语的素材
+
+**别手写 SQL，跑扫描器就行。** `tools/scan-personal-data.py` 会一口气把该读的都读完：
+
+```powershell
+python tools\scan-personal-data.py --out personal-profile.md --top 150 --recent 300
+```
+
+它自己会做这几件事：
+
+1. 查注册表 `HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice` 拿默认浏览器，再据此找 History 库。Opera GX、Chrome、Edge、Brave、Vivaldi、Waterfox 走 Chromium 那套表；Firefox 走 `places.sqlite`，搜索词从 URL 参数里抠。
+2. 导出**域名 TOP N**、**搜索词**、最近访问、一天 24 小时的活跃分布。
+3. 列装了什么软件、此刻在跑什么，已过滤 .NET、VC++、SDK、卸载器这类噪声。
+4. 读 `steamapps\*.acf`，列 Steam 游戏与体积。
 
 **只看搜索词，别看具体网址。** 搜索框是人最不设防的地方。
 
-```python
-# save as read_history.py，先改 BROWSER 路径
-import sqlite3, io, os
+**坑一，浏览器在跑**：History 被独占，`file:...?mode=ro` 也会报 `database is locked`。扫描器的做法是**先复制副本再读**，手写时照做。
 
-HISTORY = r'C:\Users\<user>\AppData\Roaming\Opera Software\Opera GX Stable\Default\History'
-OUT = r'searches.txt'
+**坑二，中文编码**：Windows 控制台是 GBK，Python 打中文会 `UnicodeEncodeError`。**一律写文件再读**，或者设 `$env:PYTHONIOENCODING='utf-8'`。
 
-uri = 'file:' + HISTORY.replace('\\', '/') + '?mode=ro'   # 只读，别锁住浏览器
-con = sqlite3.connect(uri, uri=True)
-
-lines = []
-for term, in con.execute(
-        'SELECT DISTINCT term FROM keyword_search_terms ORDER BY term'):
-    lines.append(term)
-
-with io.open(OUT, 'w', encoding='utf-8') as f:
-    f.write('\n'.join(lines))
-print('wrote %d search terms -> %s' % (len(lines), OUT))
-```
-
-**浏览器历史库路径**（`UserChoice` 注册表键告诉你默认浏览器是谁）：
+**浏览器历史库路径**。注册表 `UserChoice` 键告诉你默认浏览器是谁：
 
 | 浏览器 | 路径 |
 |---|---|
 | Opera GX | `%APPDATA%\Opera Software\Opera GX Stable\Default\History` |
 | Chrome | `%LOCALAPPDATA%\Google\Chrome\User Data\Default\History` |
 | Edge | `%LOCALAPPDATA%\Microsoft\Edge\User Data\Default\History` |
-| Firefox | `%APPDATA%\Mozilla\Firefox\Profiles\<xxx>.default\places.sqlite`（表名不同） |
-
-查默认浏览器：
-
-```powershell
-(Get-ItemProperty 'HKCU:\Software\Microsoft\Windows\Shell\Associations\UrlAssociations\http\UserChoice').ProgId
-```
-
-**坑**：Windows 控制台是 GBK，Python 打中文会 `UnicodeEncodeError`。**一律写文件再读**，或者设 `$env:PYTHONIOENCODING='utf-8'`。
+| Brave | `%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data\Default\History` |
+| Firefox | `%APPDATA%\Mozilla\Firefox\Profiles\<xxx>.default*\places.sqlite`，表名不同 |
 
 **用的时候挑什么**：重复出现的、看起来有点丢人的、有具体数字的。比如「hotmail找回」「学信网」「385泰铢」这类。**别用涉及他人隐私的搜索词。**
+
+**产出是 `personal-profile.md`**，这就是第 3 步的原料。
 
 ---
 

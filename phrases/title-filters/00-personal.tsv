@@ -24,3 +24,32 @@
 (?i)^.*(斗鱼|抖音|快手).*$	正在看别人过我没有的生活
 (?i)^.*(Gmail|收件箱|Outlook).*$	正在收件箱里假装处理重要邮件
 (?i)^.*(Google 云端硬盘|OneDrive|Dropbox).*$	正在同步一个已经同步过的文件
+(?i)^.*(喵云|miaovps).*$	正在折腾一台自己都记不住名字的服务器
+(?i)^.*modworkshop.*$	正在给 PAYDAY 2 装第 40 个 mod，游戏还没开过
+(?i)^.*(gamejus|ok24shop|itemku|codashop).*$	正在给 Steam 钱包充一种我看不懂的货币
+(?i)^.*(noellelove|huangguoai|huangguo).*$	正在查 AI 额度，还剩一点，很安心
+(?i)^.*platform\.deepseek.*$	正在给 AI 充值，希望它记得我
+(?i)^.*chatgpt.*$	正在问另一个 AI，刚才那个不听话
+(?i)^.*(10\.10\.10\.10|10\.10\.9\.9).*$	正在校园网注销页面上确认自己还活着
+(?i)^.*(router\.asus|192\.168\.1\.1|192\.168\.50\.1|w3\.asus).*$	正在路由器后台看谁在偷我网速
+(?i)^.*(wiidc|网云).*$	正在给自己的工单补一句「有人吗」
+(?i)^.*(disktool|diskanalyzer|monitortests).*$	正在查哪个文件夹吃掉了我 200 G
+(?i)^.*(greasyfork|userscript).*$	正在装第 30 个油猴脚本，一个都没生效
+(?i)^.*csdn.*$	正在 CSDN 上看一份明显是抄来的答案
+(?i)^.*(signup\.cloud\.oracle|oracle\.com).*$	正在申请一台永远不会批下来的免费服务器
+(?i)^.*hero-sms.*$	正在用别人的手机号接收一条验证码
+(?i)^.*(mega\.nz|mediafire|123pan|share\.123pan).*$	正在下载一个文件名是乱码的压缩包
+(?i)^.*(chsi|cet-bm\.neea).*$	正在报名一个我还没开始准备的考试
+(?i)^.*(escapefromtarkov|tarkov\.com).*$	正在官网确认自己仍然是个新手
+(?i)^.*steamcommunity.*$	正在数库存里那些永远卖不出去的卡
+(?i)^.*(workbuddy).*$	正在 WorkBuddy 里假装在干活
+(?i)^.*(exa\.ai|aihubmix).*$	正在看 API 用量，越看越心疼
+(?i)^.*(cider|taproom\.cider).*$	正在假装自己是 Apple Music 用户
+(?i)^.*(pawnio|pangu8|winra1n|ipsw\.dev|jayshomebrew).*$	正在准备一个可能变砖的操作
+(?i)^.*(tjjingyuan|报表).*$	正在看一张我自己也看不懂的报表
+(?i)^.*(shishishibou|任务墙).*$	正在做一个奖励全靠想象的每日任务
+(?i)^.*(mail\.163|mail\.126|smart\.mail\.163).*$	正在老邮箱里翻一封 2016 年的验证码
+(?i)^.*docs\.google.*$	正在一份永远写不完的文档里发呆
+(?i)^.*(lobsterai|youdao).*$	正在让翻译软件把中文翻成更好的中文
+(?i)^.*qoder.*$	正在用 AI 写代码，写完再手动改回去
+(?i)^.*(testufo|blurbusters|monitor).*$	正在测显示器拖影，拖影还是那个拖影
